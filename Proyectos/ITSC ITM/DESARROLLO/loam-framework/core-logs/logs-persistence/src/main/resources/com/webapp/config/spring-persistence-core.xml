@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans  
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd   
+	http://www.springframework.org/schema/context  
+	http://www.springframework.org/schema/context/spring-context-3.0.xsd
+	http://www.springframework.org/schema/tx 
+	http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
+
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="ignoreUnresolvablePlaceholders" value="true" />
+		<property name="locations">
+			<list>
+				<value>classpath:com/webapp/properties/persistence-core.properties
+				</value>
+				<value>classpath:com/webapp/properties/properties-core.properties
+				</value>
+			</list>
+		</property>
+	</bean>
+
+	<context:component-scan base-package="com.loam.framework.core.logs.persistence.*" />
+	<context:annotation-config />
+<!-- 	<tx:annotation-driven /> -->
+	<tx:annotation-driven proxy-target-class="true" transaction-manager="transactionManager" />
+
+	<bean id="commonProperties"
+		class="com.loam.framework.core.logs.persistence.common.CommonProperties">
+		<property name="IdEstatusNull" value="${id.estatus.null}" />
+		<property name="IdEstatusPanic" value="${id.estatus.panic}" />
+		<property name="IdEstatusFatal" value="${id.estatus.fatal}" />
+		<property name="IdEstatusError" value="${id.estatus.error}" />
+		<property name="IdEstatusSuccess" value="${id.estatus.success}" />
+		<property name="IdEstatusVacio" value="${id.estatus.vacio}" />
+		<property name="IdEstatusSeguridad" value="${id.estatus.seguridad}" />
+		<property name="IdEstatusGeneral" value="${id.estatus.general}" />
+		<property name="IdEstatusValidarRequest" value="${id.estatus.validar.request}" />
+
+		<property name="IdEstatusNullCodigo" value="${id.estatus.null.codigo}" />
+		<property name="IdEstatusPanicCodigo" value="${id.estatus.panic.codigo}" />
+		<property name="IdEstatusFatalCodigo" value="${id.estatus.fatal.codigo}" />
+		<property name="IdEstatusErrorCodigo" value="${id.estatus.error.codigo}" />
+		<property name="IdEstatusSuccessCodigo" value="${id.estatus.success.codigo}" />
+		<property name="IdEstatusVacioCodigo" value="${id.estatus.vacio.codigo}" />
+		<property name="IdEstatusGeneralCodigo" value="${id.estatus.general.codigo}" />
+		<property name="IdEstatusSeguridadCodigo" value="${id.estatus.seguridad.codigo}" />
+		<property name="IdEstatusValidarRequestCodigo" value="${id.estatus.validar.request.codigo}" />
+
+		<property name="IdEstatusNullMsg" value="${id.estatus.null.msg}" />
+		<property name="IdEstatusPanicMsg" value="${id.estatus.panic.msg}" />
+		<property name="IdEstatusFatalMsg" value="${id.estatus.fatal.msg}" />
+		<property name="IdEstatusErrorMsg" value="${id.estatus.error.msg}" />
+		<property name="IdEstatusSuccessMsg" value="${id.estatus.success.msg}" />
+		<property name="IdEstatusVacioMsg" value="${id.estatus.vacio.msg}" />
+		<property name="IdEstatusSuccessConsultaMsg" value="${id.estatus.success.consulta.msg}" />
+		<property name="IdEstatusGeneralMsg" value="${id.estatus.general.msg}" />
+		<property name="IdEstatusSeguridadMsg" value="${id.estatus.seguridad.msg}" />
+		<property name="IdEstatusValidarRequestMsg" value="${id.estatus.validar.request.msg}" />
+
+		<property name="IdNivelRequeridoPersistence" value="${id.nivel.requerido.persistence}" />
+		<property name="IdNivelRequeridoBussines" value="${id.nivel.requerido.bussines}" />
+		<property name="IdNivelRequeridoServices" value="${id.nivel.requerido.services}" />
+		<property name="IdNivelRequeridoCore" value="${id.nivel.requerido.core}" />
+		<property name="IdNivelRequeridoWeb" value="${id.nivel.requerido.web}" />
+		<property name="IdNivelRequeridoRest" value="${id.nivel.requerido.rest}" />
+		<property name="IdNivelRequeridoInterceptorValidar" value="${id.nivel.requerido.interceptor.validar}" />
+		<property name="logDir" value="${admin.logs.dir}" />
+
+	</bean>
+</beans>

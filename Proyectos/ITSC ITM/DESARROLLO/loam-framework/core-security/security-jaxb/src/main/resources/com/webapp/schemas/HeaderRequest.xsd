@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://www.loam.com/framework/core/security/jaxb/ws/general/Headers"
+	elementFormDefault="unqualified"
+	targetNamespace="http://www.loam.com/framework/core/security/jaxb/ws/general/Headers"
+	version="1.4">
+
+	<xsd:annotation>
+		<xsd:documentation xml:lang="es">TRANSACCION: MSTHRQ01
+			DESCRIPCION: Headers Request
+			PROGRAMADOR: Omar Santiago Romulo
+			EMPRESA: loam
+			FECHA: 14-08-2017
+		</xsd:documentation>
+	</xsd:annotation>
+	<xsd:element name="HeaderReq" type="tns:HeaderRequestType" />
+	<xsd:complexType name="RequestType">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="es">define los elementos
+				genericos del elemento Request</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="IdServicio" minOccurs="1" maxOccurs="1">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="es">Identificador de
+						servicio que se quiere invocar,
+						como servicio final. Se usara para
+						consultar al
+						WSRR
+					</xsd:documentation>
+				</xsd:annotation>
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:minLength value="1" />
+						<xsd:maxLength value="100" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="Url" minOccurs="1" maxOccurs="1">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="es">Identifica la version
+						del servicio a invocar</xsd:documentation>
+				</xsd:annotation>
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:minLength value="1" />
+						<xsd:maxLength value="5" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="metodo" minOccurs="0" maxOccurs="1">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="es">Version Mensaje
+						Negocio</xsd:documentation>
+				</xsd:annotation>
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:minLength value="1" />
+						<xsd:maxLength value="100" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="HeaderRequestType">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="es">-Elemento Base que
+				define los elementos genericos del Header Request
+				--ATRIBUTOS--
+				-locale: Informacion de localizacion del peticionario
+				-CodIdioma:
+				Formato de codificacion de caracteres
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="Acceso" type="tns:AccesoType"
+				minOccurs="1" maxOccurs="1" />
+			<xsd:element name="DatosPeticion" type="tns:RequestType"
+				minOccurs="1" maxOccurs="1" />
+		</xsd:sequence>
+		<xsd:attribute name="locale" use="optional">
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:string">
+					<xsd:minLength value="1" />
+					<xsd:maxLength value="8" />
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+		<xsd:attribute name="codIdioma" use="optional">
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:string">
+					<xsd:minLength value="1" />
+					<xsd:maxLength value="10" />
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+	</xsd:complexType>
+	<xsd:complexType name="AccesoType">
+		<xsd:sequence>
+			<xsd:element name="IdUsuario" minOccurs="1" maxOccurs="1">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="es">Identificador de
+						Usuario</xsd:documentation>
+				</xsd:annotation>
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:minLength value="1" />
+						<xsd:maxLength value="40" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="TokenUsuario" minOccurs="0" maxOccurs="1">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="es">Usuario generico o
+						especifico que realiza la
+						peticion(Usuario de Back-End)
+					</xsd:documentation>
+				</xsd:annotation>
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:minLength value="1" />
+						<xsd:maxLength value="255" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="IdSesion" minOccurs="1" maxOccurs="1">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="es">Identificador de
+						sesion para correlar sesiones</xsd:documentation>
+				</xsd:annotation>
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:minLength value="1" />
+						<xsd:maxLength value="256" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="IdOperacion" minOccurs="1" maxOccurs="1">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="es">Identificador de
+						operacion para correlar operaciones, usuado por BBT
+						para hacer la relacion del mensaje de entrada con el de salida
+					</xsd:documentation>
+				</xsd:annotation>
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:minLength value="1" />
+						<xsd:maxLength value="36" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="TokenOperacion" minOccurs="0"
+				maxOccurs="1">
+				<xsd:annotation>
+					<xsd:documentation>Token de la operacion utilizado por interfaz
+						Valida Transaccion
+					</xsd:documentation>
+				</xsd:annotation>
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:minLength value="1" />
+						<xsd:maxLength value="256" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element maxOccurs="1" minOccurs="1" name="FechaDt">
+				<xsd:annotation>
+					<xsd:documentation>FechaDt</xsd:documentation>
+				</xsd:annotation>
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:dateTime">
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="TransaccionType">
+		<xsd:sequence>
+			<xsd:element name="Monto" minOccurs="0" maxOccurs="1">
+				<xsd:annotation>
+					<xsd:documentation>Monto utilizado por interfaz Valida Transaccion
+					</xsd:documentation>
+				</xsd:annotation>
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:minLength value="2" />
+						<xsd:maxLength value="12" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

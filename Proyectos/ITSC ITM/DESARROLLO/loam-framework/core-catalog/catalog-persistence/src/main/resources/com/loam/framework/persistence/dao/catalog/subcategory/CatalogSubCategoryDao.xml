@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	<bean id="CatalogSubCategoryDao"
+		class="com.loam.framework.core.catalog.persistence.subcategory.dao.CatalogSubCategoryDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+		<property name="qryCreateSubCategory">
+			<value>
+                <![CDATA[
+					INSERT INTO CAT_SUBCATEGORIE(
+						ID_SUBCATEGORIE_CAT,
+						ID_CATEGORIE_CAT,
+						DESC_SUBCATEGORIE_CAT, 
+						STATUS_FLAG, 
+						START_DT, 
+						LAST_UPDATE_DT, 
+						LAST_UPDATE_USER)
+					VALUES(?,?,?,?,?,?,?)
+				]]>
+			</value>
+		</property>
+		<property name="qryModifySubCategory">
+			<value>
+                <![CDATA[
+					UPDATE CAT_SUBCATEGORIE SET
+						ID_CATEGORIE_CAT=?,
+						DESC_SUBCATEGORIE_CAT=?, 
+						STATUS_FLAG=?, 
+						START_DT=?, 
+						LAST_UPDATE_DT=?, 
+						LAST_UPDATE_USER=?
+					WHERE ID_SUBCATEGORIE_CAT=?
+				]]>
+			</value>
+		</property>
+		<!--property name="qryConsultSubCategory">
+			<value>
+                <![CDATA[
+					SELECT 
+						ID_SUBCATEGORIE_CAT,
+						ID_CATEGORIE_CAT,
+						DESC_SUBCATEGORIE_CAT, 
+						STATUS_FLAG, 
+						START_DT, 
+						LAST_UPDATE_DT, 
+						LAST_UPDATE_USER
+					FROM CAT_SUBCATEGORIE
+					ORDER BY ID_SUBCATEGORIE_CAT
+				]]>
+			</value>
+		</property>
+		<property name="qryConsultAllSubCategory">
+			<value>
+                <![CDATA[
+					SELECT 
+						ID_SUBCATEGORIE_CAT,
+						ID_CATEGORIE_CAT,
+						DESC_SUBCATEGORIE_CAT, 
+						STATUS_FLAG, 
+						START_DT, 
+						LAST_UPDATE_DT, 
+						LAST_UPDATE_USER
+					FROM CAT_SUBCATEGORIE
+                    WHERE ID_SUBCATEGORIE_CAT = ?
+					ORDER BY ID_SUBCATEGORIE_CAT ASC LIMIT ?,?
+				]]>
+			</value>
+		</property-->
+		<property name="qryAllSubCategory">
+			<bean class="com.loam.framework.core.catalog.persistence.common.JdbcQueryParameters">
+				<property name="sqlBase">
+					<value>
+						<![CDATA[	
+							SELECT 
+								ID_SUBCATEGORIE_CAT,
+								ID_CATEGORIE_CAT,
+								DESC_SUBCATEGORIE_CAT, 
+								STATUS_FLAG, 
+								START_DT, 
+								LAST_UPDATE_DT, 
+								LAST_UPDATE_USER
+							FROM CAT_SUBCATEGORIE
+							WHERE 1 = 1
+						]]>
+					</value>
+				</property>
+				<property name="optionalParameters">
+					<props>
+						<prop key="idSubCatego">AND ID_SUBCATEGORIE_CAT=?</prop>
+						<prop key="idCatego">AND ID_CATEGORIE_CAT=?</prop>
+						<prop key="descSubCatego"> AND UPPER(DESC_SUBCATEGORIE_CAT) LIKE ?</prop>
+						<prop key="statusFlag"> AND STATUS_FLAG=? </prop>
+						<prop key="limite"> LIMIT ?,?</prop>
+						<prop key="order"> ORDER BY DESC_SUBCATEGORIE_CAT </prop>
+						<prop key="asc"> ASC </prop>
+						<prop key="desc"> DESC </prop>
+					</props>
+				</property>
+				<property name="sqlLast">
+					<value>
+					</value>
+				</property>
+			</bean>
+		</property>		
+		<property name="qryCountAllSubCategory">
+			<bean class="com.loam.framework.core.catalog.persistence.common.JdbcQueryParameters">
+				<property name="sqlBase">
+					<value>
+						<![CDATA[	
+							SELECT COUNT(1)
+							FROM CAT_SUBCATEGORIE
+							WHERE 1 = 1
+						]]>
+					</value>
+				</property>
+				<property name="optionalParameters">
+					<props>
+						<prop key="idSubCatego">AND ID_SUBCATEGORIE_CAT=?</prop>
+						<prop key="idCatego">AND ID_CATEGORIE=?</prop>
+						<prop key="descSubCatego"> AND UPPER(DESC_SUBCATEGORIE) LIKE ?</prop>
+						<prop key="statusFlag"> AND STATUS_FLAG=? </prop>
+						<prop key="limite"> LIMIT ?,?</prop>
+						<prop key="order"> ORDER BY DESC_SUBCATEGORIE </prop>
+						<prop key="asc"> ASC </prop>
+						<prop key="desc"> DESC </prop>
+					</props>
+				</property>
+				<property name="sqlLast">
+					<value>
+					</value>
+				</property>
+			</bean>
+		</property>			
+		<property name="nextIdSubCategory">
+			<value>
+                <![CDATA[
+					SELECT MAX(ID_SUBCATEGORIE_CAT) + 1 FROM  CAT_SUBCATEGORIE
+				]]>
+			</value>
+		</property>
+		<property name="existIdSubCategory">
+			<value>
+                <![CDATA[
+					SELECT COUNT(*)
+					FROM CAT_SUBCATEGORIE
+					WHERE ID_SUBCATEGORIE_CAT=?
+				]]>
+			</value>
+		</property>
+		<!--property name="qryConsultCategSubCateg">
+			<bean class="com.loam.framework.core.catalog.persistence.common.JdbcQueryParameters">
+				<property name="sqlBase">
+					<value>
+						<![CDATA[	
+							SELECT categ.ID_CATEGORIE,categ.DESC_CATEGORIE,
+							subcat.ID_SUBCATEGORIE_CAT,subcat.DESC_SUBCATEGORIE 
+							FROM cat_categories categ, cat_subcategorie subcat
+							where categ.STATUS_FLAG=1
+							and subcat.STATUS_FLAG=1
+							and categ.ID_CATEGORIE=subcat.ID_CATEGORIE
+						]]>
+					</value>
+				</property>
+				<property name="optionalParameters">
+					<props>
+						<prop key="idCatego">and subcat.ID_CATEGORIE=?</prop>
+						<prop key="limite"> LIMIT ?,?</prop>
+					</props>
+				</property>
+				<property name="sqlLast">
+					<value>
+					</value>
+				</property>
+			</bean>
+		</property-->
+	</bean>
+</beans>

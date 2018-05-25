@@ -1,0 +1,1234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://www.loam.com/framework/core/catalog/jaxb/ws/CatalogManager"
+	targetNamespace="http://www.loam.com/framework/core/catalog/jaxb/ws/CatalogManager"
+	elementFormDefault="qualified" version="1.0">
+	<xsd:annotation>
+		<xsd:documentation xml:lang="es">TRANSACCION: MSTCC02
+			DESCRIPCION: Catalogos Corporativos
+			PROGRAMADOR: Omar Santiago Romulo
+			EMPRESA: loam
+			FECHA: 14-08-2017
+		</xsd:documentation>
+	</xsd:annotation>
+	<xsd:include schemaLocation="CatalogManagerDetails.xsd" />
+
+	<xsd:element name="MaintainCatalogColorIn">
+		<xsd:annotation>
+			<xsd:documentation>MaintainCatalogColorIn</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="1" name="CatalogColor"
+					type="tns:CatalogColor" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="MaintainCatalogColorOut">
+		<xsd:annotation>
+			<xsd:documentation>MaintainCatalogColorOut</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="0" name="CatalogColor"
+					type="tns:CatalogColor" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="MaintainCatalogRolIn">
+		<xsd:annotation>
+			<xsd:documentation>MaintainCatalogRolIn</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="1" name="CatalogRol"
+					type="tns:CatalogRol" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="MaintainCatalogRolOut">
+		<xsd:annotation>
+			<xsd:documentation>MaintainCatalogRolOut</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="0" name="CatalogRol"
+					type="tns:CatalogRol" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="MaintainCatalogCoinIn">
+		<xsd:annotation>
+			<xsd:documentation>MaintainCatalogCoinIn</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="1" name="CatalogCoin"
+					type="tns:CatalogCoin" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="MaintainCatalogCoinOut">
+		<xsd:annotation>
+			<xsd:documentation>MaintainCatalogCoinOut</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="0" name="CatalogCoin"
+					type="tns:CatalogCoin" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="MaintainCatalogCategoryIn">
+		<xsd:annotation>
+			<xsd:documentation>MaintainCatalogCategoryIn</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="1" name="CatalogCategory"
+					type="tns:CatalogCategory" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="MaintainCatalogCategoryOut">
+		<xsd:annotation>
+			<xsd:documentation>MaintainCatalogCategoryOut</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="0" name="CatalogCategory"
+					type="tns:CatalogCategory" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="MaintainCatalogAccountIn">
+		<xsd:annotation>
+			<xsd:documentation>MaintainCatalogAccountIn</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="1" name="CatalogAccount"
+					type="tns:CatalogAccount" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="MaintainCatalogAccountOut">
+		<xsd:annotation>
+			<xsd:documentation>MaintainCatalogAccountOut</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="0" name="CatalogAccount"
+					type="tns:CatalogAccount" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="MaintainCatalogSubCategoryIn">
+		<xsd:annotation>
+			<xsd:documentation>MaintainCatalogSubCategoryIn</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="1"
+					name="CatalogSubCategory" type="tns:CatalogSubCategory" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="MaintainCatalogSubCategoryOut">
+		<xsd:annotation>
+			<xsd:documentation>MaintainCatalogSubCategoryOut</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="0"
+					name="CatalogSubCategory" type="tns:CatalogSubCategory" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="MaintainCatalogProductIn">
+		<xsd:annotation>
+			<xsd:documentation>MaintainCatalogProductIn</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="1" name="CatalogProduct"
+					type="tns:CatalogProduct" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="MaintainCatalogProductOut">
+		<xsd:annotation>
+			<xsd:documentation>MaintainCatalogProductOut</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="0" name="CatalogProduct"
+					type="tns:CatalogProduct" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="MaintainCatalogContactMethodIn">
+		<xsd:annotation>
+			<xsd:documentation>MaintainCatalogContactMethodIn</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="1"
+					name="CatalogContactMethod" type="tns:CatalogContactMethod" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="MaintainCatalogContactMethodOut">
+		<xsd:annotation>
+			<xsd:documentation>MaintainCatalogContactMethodOut
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="0"
+					name="CatalogContactMethod" type="tns:CatalogContactMethod" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="MaintainCatalogMenuIn">
+		<xsd:annotation>
+			<xsd:documentation>MaintainCatalogMenuIn</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="1" name="CatalogMenu"
+					type="tns:CatalogMenu" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="MaintainCatalogMenuOut">
+		<xsd:annotation>
+			<xsd:documentation>MaintainCatalogMenuOut</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="0" name="CatalogMenu"
+					type="tns:CatalogMenu" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="MaintainCatalogRolMenuIn">
+		<xsd:annotation>
+			<xsd:documentation>MaintainCatalogRolMenuIn</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="1" name="CatalogRolMenu"
+					type="tns:CatalogRolMenu" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="MaintainCatalogRolMenuOut">
+		<xsd:annotation>
+			<xsd:documentation>MaintainCatalogRolMenuOut</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="0" name="CatalogRolMenu"
+					type="tns:CatalogRolMenu" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<xsd:element name="ConsultCatalogRolIn">
+		<xsd:annotation>
+			<xsd:documentation>ConsultCatalogRolIn</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="0" name="IdRol">
+					<xsd:annotation>
+						<xsd:documentation>IdRol</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:integer">
+							<xsd:totalDigits value="19" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+				<xsd:element maxOccurs="1" minOccurs="0" name="DescRol">
+					<xsd:annotation>
+						<xsd:documentation>DescRol</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:string">
+							<xsd:minLength value="0" />
+							<xsd:maxLength value="255" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+				<xsd:element maxOccurs="1" minOccurs="1" name="StatusFlag">
+					<xsd:annotation>
+						<xsd:documentation>STATUS_FLAG</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:integer">
+							<xsd:minInclusive value="0" />
+							<xsd:maxInclusive value="1" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+				<xsd:element maxOccurs="1" minOccurs="1" name="IdStart">
+					<xsd:annotation>
+						<xsd:documentation>IdStart</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:integer">
+							<xsd:minInclusive value="0" />
+							<xsd:maxInclusive value="99999" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+				<xsd:element maxOccurs="1" minOccurs="1" name="IdEnd">
+					<xsd:annotation>
+						<xsd:documentation>IdEnd</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:integer">
+							<xsd:minInclusive value="1" />
+							<xsd:maxInclusive value="99999" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+				<xsd:element maxOccurs="1" minOccurs="0" name="Order">
+					<xsd:annotation>
+						<xsd:documentation>Order</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:string">
+							<xsd:minLength value="0" />
+							<xsd:maxLength value="50" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="ConsultCatalogRolOut">
+		<xsd:annotation>
+			<xsd:documentation>ConsultCatalogRolOut</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="0" name="TotalRegs">
+					<xsd:annotation>
+						<xsd:documentation>TotalRegs</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:integer">
+							<xsd:minInclusive value="0" />
+							<xsd:maxInclusive value="9999999999" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+				<xsd:element maxOccurs="unbounded" minOccurs="1"
+					name="CatalogRol" type="tns:CatalogRol" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="ConsultCatalogCoinIn">
+		<xsd:annotation>
+			<xsd:documentation>ConsultCatalogCoinIn</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="0" name="IdCoin">
+					<xsd:annotation>
+						<xsd:documentation>IdCoin</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:integer">
+							<xsd:minInclusive value="1" />
+							<xsd:maxInclusive value="9999999999" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+				<xsd:element maxOccurs="1" minOccurs="0" name="DescCoin">
+					<xsd:annotation>
+						<xsd:documentation>DescCoin</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:string">
+							<xsd:minLength value="0" />
+							<xsd:maxLength value="255" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+							<xsd:element maxOccurs="1" minOccurs="1" name="StatusFlag">
+				<xsd:annotation>
+					<xsd:documentation>STATUS_FLAG</xsd:documentation>
+				</xsd:annotation>
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:integer">
+						<xsd:minInclusive value="0" />
+						<xsd:maxInclusive value="1" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+				<xsd:element maxOccurs="1" minOccurs="1" name="IdStart">
+					<xsd:annotation>
+						<xsd:documentation>IdStart</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:integer">
+							<xsd:minInclusive value="0" />
+							<xsd:maxInclusive value="99999" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+				<xsd:element maxOccurs="1" minOccurs="1" name="IdEnd">
+					<xsd:annotation>
+						<xsd:documentation>IdEnd</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:integer">
+							<xsd:minInclusive value="1" />
+							<xsd:maxInclusive value="99999" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+				<xsd:element maxOccurs="1" minOccurs="0" name="Order">
+					<xsd:annotation>
+						<xsd:documentation>Order</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:string">
+							<xsd:minLength value="1" />
+							<xsd:maxLength value="50" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="ConsultCatalogCoinOut">
+		<xsd:annotation>
+			<xsd:documentation>ConsultCatalogCoinOut</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="0" name="TotalRegs">
+					<xsd:annotation>
+						<xsd:documentation>TotalRegs</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:integer">
+							<xsd:minInclusive value="0" />
+							<xsd:maxInclusive value="9999999999" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+				<xsd:element maxOccurs="unbounded" minOccurs="1"
+					name="CatalogCoin" type="tns:CatalogCoin" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="ConsultCatalogCategoryIn">
+		<xsd:annotation>
+			<xsd:documentation>ConsultCatalogCategoryIn
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="0" name="IdCategory">
+					<xsd:annotation>
+						<xsd:documentation>IdCategory</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:integer">
+							<xsd:minInclusive value="1" />
+							<xsd:maxInclusive value="9999999999" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+				<xsd:element maxOccurs="1" minOccurs="0" name="DescCategory">
+					<xsd:annotation>
+						<xsd:documentation>DescCategory</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:string">
+							<xsd:minLength value="0" />
+							<xsd:maxLength value="255" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+							<xsd:element maxOccurs="1" minOccurs="1" name="StatusFlag">
+				<xsd:annotation>
+					<xsd:documentation>STATUS_FLAG</xsd:documentation>
+				</xsd:annotation>
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:integer">
+						<xsd:minInclusive value="0" />
+						<xsd:maxInclusive value="1" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+				<xsd:element maxOccurs="1" minOccurs="1" name="IdStart">
+					<xsd:annotation>
+						<xsd:documentation>IdStart</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:integer">
+							<xsd:minInclusive value="0" />
+							<xsd:maxInclusive value="99999" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+				<xsd:element maxOccurs="1" minOccurs="1" name="IdEnd">
+					<xsd:annotation>
+						<xsd:documentation>IdEnd</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:integer">
+							<xsd:minInclusive value="1" />
+							<xsd:maxInclusive value="99999" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+				<xsd:element maxOccurs="1" minOccurs="0" name="Order">
+					<xsd:annotation>
+						<xsd:documentation>Order</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:string">
+							<xsd:minLength value="1" />
+							<xsd:maxLength value="50" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="ConsultCatalogCategoryOut">
+		<xsd:annotation>
+			<xsd:documentation>ConsultCatalogCategoryOut
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="0" name="TotalRegs">
+					<xsd:annotation>
+						<xsd:documentation>TotalRegs</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:integer">
+							<xsd:minInclusive value="0" />
+							<xsd:maxInclusive value="9999999999" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+				<xsd:element maxOccurs="unbounded" minOccurs="1"
+					name="CatalogCategory" type="tns:CatalogCategory" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="ConsultCatalogAccountIn">
+		<xsd:annotation>
+			<xsd:documentation>ConsultCatalogAccountIn</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="0" name="IdAccount">
+					<xsd:annotation>
+						<xsd:documentation>IdAccount</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:integer">
+							<xsd:minInclusive value="1" />
+							<xsd:maxInclusive value="9999999999" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+				<xsd:element maxOccurs="1" minOccurs="0" name="DescAccount">
+					<xsd:annotation>
+						<xsd:documentation>DescAccount</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:string">
+							<xsd:minLength value="0" />
+							<xsd:maxLength value="255" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+							<xsd:element maxOccurs="1" minOccurs="1" name="StatusFlag">
+				<xsd:annotation>
+					<xsd:documentation>STATUS_FLAG</xsd:documentation>
+				</xsd:annotation>
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:integer">
+						<xsd:minInclusive value="0" />
+						<xsd:maxInclusive value="1" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+				<xsd:element maxOccurs="1" minOccurs="1" name="IdStart">
+					<xsd:annotation>
+						<xsd:documentation>IdStart</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:integer">
+							<xsd:minInclusive value="0" />
+							<xsd:maxInclusive value="99999" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+				<xsd:element maxOccurs="1" minOccurs="1" name="IdEnd">
+					<xsd:annotation>
+						<xsd:documentation>IdEnd</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:integer">
+							<xsd:minInclusive value="1" />
+							<xsd:maxInclusive value="99999" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+				<xsd:element maxOccurs="1" minOccurs="0" name="Order">
+					<xsd:annotation>
+						<xsd:documentation>Order</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:string">
+							<xsd:minLength value="1" />
+							<xsd:maxLength value="50" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="ConsultCatalogAccountOut">
+		<xsd:annotation>
+			<xsd:documentation>ConsultCatalogAccountOut</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="0" name="TotalRegs">
+					<xsd:annotation>
+						<xsd:documentation>TotalRegs</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:integer">
+							<xsd:minInclusive value="0" />
+							<xsd:maxInclusive value="9999999999" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+				<xsd:element maxOccurs="unbounded" minOccurs="1"
+					name="CatalogAccount" type="tns:CatalogAccount" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="ConsultCatalogColorIn">
+		<xsd:annotation>
+			<xsd:documentation>ConsultCatalogColorIn</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="0" name="IdColor">
+					<xsd:annotation>
+						<xsd:documentation>IdColor</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:integer">
+							<xsd:totalDigits value="19" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+				<xsd:element maxOccurs="1" minOccurs="0" name="DescColor">
+					<xsd:annotation>
+						<xsd:documentation>DescColor</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:string">
+							<xsd:minLength value="0" />
+							<xsd:maxLength value="255" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+							<xsd:element maxOccurs="1" minOccurs="1" name="StatusFlag">
+				<xsd:annotation>
+					<xsd:documentation>STATUS_FLAG</xsd:documentation>
+				</xsd:annotation>
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:integer">
+						<xsd:minInclusive value="0" />
+						<xsd:maxInclusive value="1" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+				<xsd:element maxOccurs="1" minOccurs="1" name="IdStart">
+					<xsd:annotation>
+						<xsd:documentation>IdStart</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:integer">
+							<xsd:minInclusive value="0" />
+							<xsd:maxInclusive value="99999" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+				<xsd:element maxOccurs="1" minOccurs="1" name="IdEnd">
+					<xsd:annotation>
+						<xsd:documentation>IdEnd</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:integer">
+							<xsd:minInclusive value="1" />
+							<xsd:maxInclusive value="99999" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+				<xsd:element maxOccurs="1" minOccurs="0" name="Order">
+					<xsd:annotation>
+						<xsd:documentation>Order</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:string">
+							<xsd:minLength value="1" />
+							<xsd:maxLength value="50" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="ConsultCatalogColorOut">
+		<xsd:annotation>
+			<xsd:documentation>ConsultCatalogColorOut</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="0" name="TotalRegs">
+					<xsd:annotation>
+						<xsd:documentation>TotalRegs</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:integer">
+							<xsd:minInclusive value="0" />
+							<xsd:maxInclusive value="9999999999" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+				<xsd:element maxOccurs="unbounded" minOccurs="1"
+					name="CatalogColor" type="tns:CatalogColor" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="ConsultCatalogProductIn">
+		<xsd:annotation>
+			<xsd:documentation>ConsultCatalogProductIn</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="0" name="IdProduct">
+					<xsd:annotation>
+						<xsd:documentation>IdProduct</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:integer">
+							<xsd:minInclusive value="1" />
+							<xsd:maxInclusive value="9999999999" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+				<xsd:element maxOccurs="1" minOccurs="0" name="DescProduct">
+					<xsd:annotation>
+						<xsd:documentation>DescProduct</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:string">
+							<xsd:minLength value="0" />
+							<xsd:maxLength value="255" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+				<xsd:element maxOccurs="1" minOccurs="0" name="IdSubCategory">
+					<xsd:annotation>
+						<xsd:documentation>IdSubCategory</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:integer">
+							<xsd:minInclusive value="1" />
+							<xsd:maxInclusive value="9999999999" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+							<xsd:element maxOccurs="1" minOccurs="1" name="StatusFlag">
+				<xsd:annotation>
+					<xsd:documentation>STATUS_FLAG</xsd:documentation>
+				</xsd:annotation>
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:integer">
+						<xsd:minInclusive value="0" />
+						<xsd:maxInclusive value="1" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+				<xsd:element maxOccurs="1" minOccurs="1" name="IdStart">
+					<xsd:annotation>
+						<xsd:documentation>IdStart</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:integer">
+							<xsd:minInclusive value="0" />
+							<xsd:maxInclusive value="99999" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+				<xsd:element maxOccurs="1" minOccurs="1" name="IdEnd">
+					<xsd:annotation>
+						<xsd:documentation>IdEnd</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:integer">
+							<xsd:minInclusive value="1" />
+							<xsd:maxInclusive value="99999" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+				<xsd:element maxOccurs="1" minOccurs="0" name="Order">
+					<xsd:annotation>
+						<xsd:documentation>Order</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:string">
+							<xsd:minLength value="1" />
+							<xsd:maxLength value="50" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="ConsultCatalogProductOut">
+		<xsd:annotation>
+			<xsd:documentation>ConsultCatalogProductOut</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="0" name="TotalRegs">
+					<xsd:annotation>
+						<xsd:documentation>TotalRegs</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:integer">
+							<xsd:minInclusive value="0" />
+							<xsd:maxInclusive value="9999999999" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+				<xsd:element maxOccurs="unbounded" minOccurs="1"
+					name="CatalogProduct" type="tns:CatalogProduct" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="ConsultCatalogSubCategoryIn">
+		<xsd:annotation>
+			<xsd:documentation>ConsultCatalogSubCategoryIn
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="0" name="IdSubCategory">
+					<xsd:annotation>
+						<xsd:documentation>IdSubCategory</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:integer">
+							<xsd:minInclusive value="1" />
+							<xsd:maxInclusive value="9999999999" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+				<xsd:element maxOccurs="1" minOccurs="0" name="DescSubCategory">
+					<xsd:annotation>
+						<xsd:documentation>DescSubCategory</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:string">
+							<xsd:minLength value="0" />
+							<xsd:maxLength value="255" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+				<xsd:element maxOccurs="1" minOccurs="0" name="IdCategory">
+					<xsd:annotation>
+						<xsd:documentation>IdCategory</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:integer">
+							<xsd:minInclusive value="1" />
+							<xsd:maxInclusive value="9999999999" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+							<xsd:element maxOccurs="1" minOccurs="1" name="StatusFlag">
+				<xsd:annotation>
+					<xsd:documentation>STATUS_FLAG</xsd:documentation>
+				</xsd:annotation>
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:integer">
+						<xsd:minInclusive value="0" />
+						<xsd:maxInclusive value="1" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+				<xsd:element maxOccurs="1" minOccurs="1" name="IdStart">
+					<xsd:annotation>
+						<xsd:documentation>IdStart</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:integer">
+							<xsd:minInclusive value="0" />
+							<xsd:maxInclusive value="99999" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+				<xsd:element maxOccurs="1" minOccurs="1" name="IdEnd">
+					<xsd:annotation>
+						<xsd:documentation>IdEnd</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:integer">
+							<xsd:minInclusive value="1" />
+							<xsd:maxInclusive value="99999" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+				<xsd:element maxOccurs="1" minOccurs="0" name="Order">
+					<xsd:annotation>
+						<xsd:documentation>Order</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:string">
+							<xsd:minLength value="1" />
+							<xsd:maxLength value="50" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="ConsultCatalogSubCategoryOut">
+		<xsd:annotation>
+			<xsd:documentation>ConsultCatalogSubCategoryOut
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="0" name="TotalRegs">
+					<xsd:annotation>
+						<xsd:documentation>TotalRegs</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:integer">
+							<xsd:minInclusive value="0" />
+							<xsd:maxInclusive value="9999999999" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+				<xsd:element maxOccurs="unbounded" minOccurs="1"
+					name="CatalogSubCategory" type="tns:CatalogSubCategory" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="ConsultCatalogContactMethodIn">
+		<xsd:annotation>
+			<xsd:documentation>ConsultCatalogContactMethodIn</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="0" name="IdContactMethod">
+					<xsd:annotation>
+						<xsd:documentation>IdContactMethod</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:integer">
+							<xsd:totalDigits value="19" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+				<xsd:element maxOccurs="1" minOccurs="0" name="DescContactMethod">
+					<xsd:annotation>
+						<xsd:documentation>DescContactMethod</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:string">
+							<xsd:minLength value="0" />
+							<xsd:maxLength value="255" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+							<xsd:element maxOccurs="1" minOccurs="1" name="StatusFlag">
+				<xsd:annotation>
+					<xsd:documentation>STATUS_FLAG</xsd:documentation>
+				</xsd:annotation>
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:integer">
+						<xsd:minInclusive value="0" />
+						<xsd:maxInclusive value="1" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+				<xsd:element maxOccurs="1" minOccurs="1" name="IdStart">
+					<xsd:annotation>
+						<xsd:documentation>IdStart</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:integer">
+							<xsd:minInclusive value="0" />
+							<xsd:maxInclusive value="99999" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+				<xsd:element maxOccurs="1" minOccurs="1" name="IdEnd">
+					<xsd:annotation>
+						<xsd:documentation>IdEnd</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:integer">
+							<xsd:minInclusive value="1" />
+							<xsd:maxInclusive value="99999" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+				<xsd:element maxOccurs="1" minOccurs="0" name="Order">
+					<xsd:annotation>
+						<xsd:documentation>Order</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:string">
+							<xsd:minLength value="0" />
+							<xsd:maxLength value="50" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="ConsultCatalogContactMethodOut">
+		<xsd:annotation>
+			<xsd:documentation>ConsultCatalogContactMethodOut</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="0" name="TotalRegs">
+					<xsd:annotation>
+						<xsd:documentation>TotalRegs</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:integer">
+							<xsd:minInclusive value="0" />
+							<xsd:maxInclusive value="9999999999" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+				<xsd:element maxOccurs="unbounded" minOccurs="1"
+					name="CatalogContactMethod" type="tns:CatalogContactMethod" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<xsd:element name="ConsultCatalogMenuIn">
+		<xsd:annotation>
+			<xsd:documentation>ConsultCatalogMenuIn</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="0" name="IdMenu">
+					<xsd:annotation>
+						<xsd:documentation>IdContactMethod</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:integer">
+							<xsd:totalDigits value="19" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+				<xsd:element maxOccurs="1" minOccurs="0" name="IdMenuPadre">
+					<xsd:annotation>
+						<xsd:documentation>IdContactMethod</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:integer">
+							<xsd:totalDigits value="19" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+				<xsd:element maxOccurs="1" minOccurs="0" name="DescMenu">
+					<xsd:annotation>
+						<xsd:documentation>DescContactMethod</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:string">
+							<xsd:minLength value="0" />
+							<xsd:maxLength value="255" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+				<xsd:element maxOccurs="1" minOccurs="0" name="DescMenuPadre">
+					<xsd:annotation>
+						<xsd:documentation>DescContactMethod</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:string">
+							<xsd:minLength value="0" />
+							<xsd:maxLength value="255" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+							<xsd:element maxOccurs="1" minOccurs="1" name="StatusFlag">
+				<xsd:annotation>
+					<xsd:documentation>STATUS_FLAG</xsd:documentation>
+				</xsd:annotation>
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:integer">
+						<xsd:minInclusive value="0" />
+						<xsd:maxInclusive value="1" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+				<xsd:element maxOccurs="1" minOccurs="1" name="IdStart">
+					<xsd:annotation>
+						<xsd:documentation>IdStart</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:integer">
+							<xsd:minInclusive value="0" />
+							<xsd:maxInclusive value="99999" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+				<xsd:element maxOccurs="1" minOccurs="1" name="IdEnd">
+					<xsd:annotation>
+						<xsd:documentation>IdEnd</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:integer">
+							<xsd:minInclusive value="1" />
+							<xsd:maxInclusive value="99999" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+				<xsd:element maxOccurs="1" minOccurs="0" name="Order">
+					<xsd:annotation>
+						<xsd:documentation>Order</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:string">
+							<xsd:minLength value="0" />
+							<xsd:maxLength value="50" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="ConsultCatalogMenuOut">
+		<xsd:annotation>
+			<xsd:documentation>ConsultCatalogContactMethodOut</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="0" name="TotalRegs">
+					<xsd:annotation>
+						<xsd:documentation>TotalRegs</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:integer">
+							<xsd:minInclusive value="0" />
+							<xsd:maxInclusive value="9999999999" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+				<xsd:element maxOccurs="unbounded" minOccurs="1"
+					name="CatalogMenu" type="tns:CatalogMenu" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<xsd:element name="ConsultCatalogRolMenuIn">
+		<xsd:annotation>
+			<xsd:documentation>ConsultCatalogRolMenuIn</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="0" name="IdRol">
+					<xsd:annotation>
+						<xsd:documentation>IdRol</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:integer">
+							<xsd:totalDigits value="19" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+				<xsd:element maxOccurs="1" minOccurs="0" name="IdMenu">
+					<xsd:annotation>
+						<xsd:documentation>IdMenu</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:integer">
+							<xsd:totalDigits value="19" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+							<xsd:element maxOccurs="1" minOccurs="1" name="StatusFlag">
+				<xsd:annotation>
+					<xsd:documentation>STATUS_FLAG</xsd:documentation>
+				</xsd:annotation>
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:integer">
+						<xsd:minInclusive value="0" />
+						<xsd:maxInclusive value="1" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="ConsultCatalogRolMenuOut">
+		<xsd:annotation>
+			<xsd:documentation>ConsultCatalogRolMenuOut</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="0" name="TotalRegs">
+					<xsd:annotation>
+						<xsd:documentation>TotalRegs</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:integer">
+							<xsd:minInclusive value="0" />
+							<xsd:maxInclusive value="9999999999" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+				<xsd:element maxOccurs="unbounded" minOccurs="1"
+					name="CatalogRolMenu" type="tns:CatalogRolMenu" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+</xsd:schema>

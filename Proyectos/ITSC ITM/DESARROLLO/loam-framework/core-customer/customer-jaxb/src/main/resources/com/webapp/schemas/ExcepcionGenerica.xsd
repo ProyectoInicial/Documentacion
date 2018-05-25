@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+xmlns:tns="http://www.loam.com/framework/core/customer/jaxb/ws/common/ExcepcionGeneral"
+attributeFormDefault="unqualified" elementFormDefault="unqualified" 
+targetNamespace="http://www.loam.com/framework/core/customer/jaxb/ws/common/ExcepcionGeneral" version="1.1" >
+
+   <xsd:annotation>
+      <xsd:documentation xml:lang="es">TRANSACCION: MSTEG01
+DESCRIPCION: Excepcion General
+PROGRAMADOR: Omar Santiago Romulo
+EMPRESA: loam
+FECHA: 14-08-2017</xsd:documentation>
+   </xsd:annotation>
+
+  <xsd:element name="Excepcion" type="tns:ExcepcionGenericaType">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="es">-Elemento que agrupa el detalle del error tecnico</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="ExcepcionGenericaType">
+    <xsd:annotation/>
+    <xsd:sequence>
+      <xsd:element name="Codigo" type="xsd:string" minOccurs="1" maxOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>Campo que contiene los codigos a ser enviados
+						desde los diferentes
+						proveedores</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Componente" type="xsd:string" minOccurs="0" maxOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>Componente que Genero el Error</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Metodo" type="xsd:string" minOccurs="0" maxOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>Metodo que Genero el Error</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Descripcion" type="xsd:string" minOccurs="1" maxOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>Descripcion detallada del Error</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

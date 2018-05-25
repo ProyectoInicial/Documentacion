@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	<bean id="CatalogMenuDao"
+		class="com.loam.framework.core.catalog.persistence.menu.dao.CatalogMenuDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+		<property name="qryCreateMenu">
+			<value>
+                <![CDATA[
+
+				]]>
+			</value>
+		</property>
+		<property name="qryModifyMenu">
+			<value>
+                <![CDATA[
+
+				]]>
+			</value>
+		</property>
+		<property name="nextIdMenu">
+			<value>
+                <![CDATA[
+
+				]]>
+			</value>
+		</property>
+		<property name="existIdMenu">
+			<value>
+                <![CDATA[
+
+				]]>
+			</value>
+		</property>
+		<property name="qryCreateRolMenu">
+			<value>
+                <![CDATA[
+
+				]]>
+			</value>
+		</property>
+		<property name="qryModifyRolMenu">
+			<value>
+                <![CDATA[
+
+				]]>
+			</value>
+		</property>
+		<property name="nextIdRolMenu">
+			<value>
+                <![CDATA[
+
+				]]>
+			</value>
+		</property>
+		<property name="existIdRolMenu">
+			<value>
+                <![CDATA[
+
+				]]>
+			</value>
+		</property>
+		<property name="qryConsultMenuStart">
+			<value>
+                <![CDATA[
+					select menu.ID_MENU_CAT, menu.DESC_MENU_CAT, menu.URL_MENU_CAT, menu.ID_MENU_PADRE_CAT, menu.DESC_MENU_PADRE_CAT,
+					menu.TYPE_MENU_CAT, menu.STATUS_FLAG, menu.START_DT, menu.LAST_UPDATE_DT, menu.LAST_UPDATE_USER
+					from cat_rol rol, CAT_ROLMENUS rolmen, cat_menus menu where 
+					rol.ID_ROL_CAT = rolmen.ID_ROL_CAT and
+					menu.ID_MENU_CAT = rolmen.ID_MENU_CAT and 
+					rolmen.ID_ROL_CAT=?
+					order by menu.ID_MENU_CAT asc
+				]]>
+			</value>
+		</property>
+	</bean>
+</beans>

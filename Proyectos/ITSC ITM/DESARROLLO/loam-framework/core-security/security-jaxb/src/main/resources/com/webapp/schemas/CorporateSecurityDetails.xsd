@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://www.loam.com/framework/core/security/jaxb/ws/CorporateSecurity"
+	targetNamespace="http://www.loam.com/framework/core/security/jaxb/ws/CorporateSecurity"
+	elementFormDefault="qualified" version="1.0">
+	<xsd:annotation>
+		<xsd:documentation xml:lang="es">TRANSACCION: MSTSC01
+			DESCRIPCION: Seguridad Corporativa
+			PROGRAMADOR: Omar Santiago Romulo
+			EMPRESA: loam 
+			FECHA: 14-08-2017
+		</xsd:documentation>
+	</xsd:annotation>
+	
+	<xsd:complexType name="SecurityLogin">
+	<xsd:sequence>
+			<xsd:element maxOccurs="1" minOccurs="1" name="LoginUserToken">
+				<xsd:annotation>
+					<xsd:documentation>LoginUserToken</xsd:documentation>
+				</xsd:annotation>
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:minLength value="5" />
+						<xsd:maxLength value="255" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+						<xsd:element maxOccurs="1" minOccurs="1" name="LoginUserAlias">
+				<xsd:annotation>
+					<xsd:documentation>loginUserAlias</xsd:documentation>
+				</xsd:annotation>
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:minLength value="5" />
+						<xsd:maxLength value="255" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+						<xsd:element maxOccurs="1" minOccurs="1" name="LoginUserEmail">
+				<xsd:annotation>
+					<xsd:documentation>loginUserEmail</xsd:documentation>
+				</xsd:annotation>
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:minLength value="5" />
+						<xsd:maxLength value="255" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+						<xsd:element maxOccurs="1" minOccurs="1" name="LoginUserPass">
+				<xsd:annotation>
+					<xsd:documentation>loginUserPass</xsd:documentation>
+				</xsd:annotation>
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:minLength value="5" />
+						<xsd:maxLength value="255" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+
+</xsd:schema>

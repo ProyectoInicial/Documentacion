@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	<bean id="CatalogProductDao"
+		class="com.loam.framework.core.catalog.persistence.product.dao.CatalogProductDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+		<property name="qryCreateProduct">
+			<value>
+                <![CDATA[
+					INSERT INTO CAT_PRODUCT(
+						ID_PRODUCT_CAT,
+						NAME_PRODUCT_CAT, 
+						DESC_PRODUCT_CAT, 
+						ID_SUBCATEGORIE_CAT,
+						STATUS_FLAG, 
+						START_DT, 
+						LAST_UPDATE_DT, 
+						LAST_UPDATE_USER
+						)
+					values(?,?,?,?,?,?,?,?)
+				]]>
+			</value>
+		</property>
+		<property name="qryModifyProduct">
+			<value>
+                <![CDATA[
+					UPDATE CAT_PRODUCT SET(
+						NAME_PRODUCT_CAT=?, 
+						DESC_PRODUCT_CAT=?, 
+						ID_SUBCATEGORIE_CAT=?,
+						STATUS_FLAG=?, 
+						START_DT=?, 
+						LAST_UPDATE_DT=?, 
+						LAST_UPDATE_USER=?					
+					WHERE ID_PRODUCT_CAT=?
+				]]>
+			</value>
+		</property>
+		<property name="qryConsultProduct">
+			<value>
+                <![CDATA[
+					SELECT
+						ID_PRODUCT_CAT,
+						NAME_PRODUCT_CAT, 
+						DESC_PRODUCT_CAT, 
+						ID_SUBCATEGORIE_CAT,
+						STATUS_FLAG, 
+						START_DT, 
+						LAST_UPDATE_DT, 
+						LAST_UPDATE_USER
+					FROM CAT_PRODUCT
+					ORDER BY ID_PRODUCT_CAT
+				]]>
+			</value>
+		</property>
+		<property name="qryConsultAllProduct">
+			<value>
+                <![CDATA[
+					SELECT
+						ID_PRODUCT_CAT,
+						NAME_PRODUCT_CAT, 
+						DESC_PRODUCT_CAT, 
+						ID_SUBCATEGORIE_CAT,
+						STATUS_FLAG, 
+						START_DT, 
+						LAST_UPDATE_DT, 
+						LAST_UPDATE_USER
+					FROM CAT_PRODUCT
+                    WHERE ID_PRODUCT_CAT = ?
+					ORDER BY ID_PRODUCT_CAT ASC LIMIT ?,?
+				]]>
+			</value>
+		</property>
+		<property name="qryAllProduct">
+			<bean class="com.loam.framework.core.catalog.persistence.common.JdbcQueryParameters">
+				<property name="sqlBase">
+					<value>
+						<![CDATA[	
+							SELECT
+								ID_PRODUCT_CAT,
+								NAME_PRODUCT_CAT, 
+								DESC_PRODUCT_CAT, 
+								ID_SUBCATEGORIE_CAT,
+								STATUS_FLAG, 
+								START_DT, 
+								LAST_UPDATE_DT, 
+								LAST_UPDATE_USER
+							FROM CAT_PRODUCT
+							WHERE 1 = 1
+						]]>
+					</value>
+				</property>
+				<property name="optionalParameters">
+					<props>
+						<prop key="idProduct">AND ID_PRODUCT_CAT=?</prop>
+						<prop key="idSubCategory">AND ID_SUBCATEGORIE_CAT=?</prop>
+						<prop key="descProduct"> AND UPPER(NAME_PRODUCT_CAT) LIKE ?</prop>
+						<prop key="statusFlag"> AND STATUS_FLAG=? </prop>
+						<prop key="limite"> LIMIT ?,?</prop>
+						<prop key="order"> ORDER BY NAME_PRODUCT_CAT </prop>
+						<prop key="asc"> ASC </prop>
+						<prop key="desc"> DESC </prop>
+					</props>
+				</property>
+				<property name="sqlLast">
+					<value>
+					</value>
+				</property>
+			</bean>
+		</property>		
+		<property name="qryCountAllProduct">
+			<bean class="com.loam.framework.core.catalog.persistence.common.JdbcQueryParameters">
+				<property name="sqlBase">
+					<value>
+						<![CDATA[	
+							SELECT COUNT(1)
+							FROM CAT_PRODUCT
+							WHERE 1 = 1
+						]]>
+					</value>
+				</property>
+				<property name="optionalParameters">
+					<props>
+						<prop key="idProduct">AND ID_PRODUCT_CAT=?</prop>
+						<prop key="idSubCategory">AND ID_SUBCATEGORIE_CAT=?</prop>
+						<prop key="descProduct"> AND UPPER(NAME_PRODUCT_CAT) LIKE ?</prop>
+						<prop key="statusFlag"> AND STATUS_FLAG=? </prop>
+						<prop key="limite"> LIMIT ?,?</prop>
+						<prop key="order"> ORDER BY NAME_PRODUCT_CAT </prop>
+						<prop key="asc"> ASC </prop>
+						<prop key="desc"> DESC </prop>
+					</props>
+				</property>
+				<property name="sqlLast">
+					<value>
+					</value>
+				</property>
+			</bean>
+		</property>		
+		<property name="nextIdProduct">
+			<value>
+                <![CDATA[
+					SELECT MAX(ID_PRODUCT_CAT) + 1 FROM  CAT_PRODUCT
+				]]>
+			</value>
+		</property>
+		<property name="existIdProduct">
+			<value>
+                <![CDATA[
+					SELECT COUNT(*)
+					FROM CAT_PRODUCT
+					WHERE ID_PRODUCT_CAT=?
+				]]>
+			</value>
+		</property>
+		<property name="qryConsultProductBySubCateg">
+			<bean class="com.loam.framework.core.catalog.persistence.common.JdbcQueryParameters">
+				<property name="sqlBase">
+					<value>
+						<![CDATA[	
+							SELECT categ.ID_CATEGORIE_CAT, categ.DESC_CATEGORIE_CAT, subcat.ID_SUBCATEGORIE_CAT,
+							subcat.DESC_SUBCATEGORIE_CAT, prod.ID_PRODUCT_CAT, prod.NAME_PRODUCT_CAT, 
+							acc.ID_ACCOUNT_PRODUCT, acc.PRICE, acc.STOCK, acc.ID_COIN_CAT
+							FROM cat_categories categ, cat_subcategorie subcat,
+							cat_product prod, account_product acc
+							where categ.STATUS_FLAG=1
+							and subcat.STATUS_FLAG=1
+							and prod.STATUS_FLAG=1
+							and acc.STATUS_FLAG=1
+							and categ.ID_CATEGORIE_CAT=subcat.ID_CATEGORIE_CAT
+							and subcat.ID_SUBCATEGORIE_CAT=prod.ID_SUBCATEGORIE_CAT
+							and prod.ID_PRODUCT_CAT=acc.ID_PRODUCT_CAT
+						]]>
+					</value>
+				</property>
+				<property name="optionalParameters">
+					<props>
+						<prop key="idSubCatego">AND subcat.ID_SUBCATEGORIE_CAT=?</prop>
+						<prop key="limite"> LIMIT ?,?</prop>
+					</props>
+				</property>
+				<property name="sqlLast">
+					<value>
+					</value>
+				</property>
+			</bean>
+		</property>
+	</bean>
+</beans>

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	<bean id="CatalogRolDao"
+		class="com.loam.framework.core.catalog.persistence.rol.dao.CatalogRolDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+		<property name="qryCreateRol">
+			<value>
+                <![CDATA[
+					INSERT INTO CAT_ROL (
+						ID_ROL_CAT, 
+						DESC_ROL_CAT,
+						STATUS_FLAG,
+						START_DT,
+						LAST_UPDATE_DT,
+						LAST_UPDATE_USER
+					)
+					VALUES(?,?,?,?,?,?)
+				]]>
+			</value>
+		</property>
+		<property name="qryModifyRol">
+			<value>
+                <![CDATA[
+					UPDATE CAT_ROL SET
+						DESC_ROL_CAT=?, 
+						STATUS_FLAG=?,
+						LAST_UPDATE_DT=?,
+						LAST_UPDATE_USER=?
+					WHERE ID_ROL_CAT = ?
+				]]>
+			</value>
+		</property>
+		<property name="qryConsultRoles">
+			<bean class="com.loam.framework.core.catalog.persistence.common.JdbcQueryParameters">
+				<property name="sqlBase">
+					<value>
+						<![CDATA[	
+							SELECT 
+								ID_ROL_CAT, 
+								DESC_ROL_CAT, 
+								STATUS_FLAG,
+								START_DT,
+								LAST_UPDATE_DT,
+								LAST_UPDATE_USER
+							FROM CAT_ROL
+							WHERE 1 = 1
+						]]>
+					</value>
+				</property>
+				<property name="optionalParameters">
+					<props>
+						<prop key="idRol">AND ID_ROL_CAT=?</prop>
+						<prop key="descRol"> AND UPPER(DESC_ROL_CAT) LIKE ?</prop>
+						<prop key="statusFlag"> AND STATUS_FLAG=? </prop>
+						<prop key="limite"> LIMIT ?,?</prop>
+						<prop key="order"> ORDER BY DESC_ROL_CAT </prop>
+						<prop key="asc"> ASC </prop>
+						<prop key="desc"> DESC </prop>
+					</props>
+				</property>
+				<property name="sqlLast">
+					<value>  </value>
+				</property>
+			</bean>
+		</property>
+		<property name="qryCountConsultRoles">
+			<bean class="com.loam.framework.core.catalog.persistence.common.JdbcQueryParameters">
+				<property name="sqlBase">
+					<value>
+						<![CDATA[	
+							SELECT COUNT(1)
+							FROM CAT_ROL
+							WHERE 1 = 1
+						]]>
+					</value>
+				</property>
+				<property name="optionalParameters">
+					<props>
+						<prop key="idRol">AND ID_ROL_CAT=?</prop>
+						<prop key="descRol"> AND UPPER(DESC_ROL_CAT) LIKE ?</prop>
+						<prop key="statusFlag"> AND STATUS_FLAG=? </prop>
+						<prop key="limite"> LIMIT ?,?</prop>
+						<prop key="order"> ORDER BY DESC_ROL_CAT </prop>
+						<prop key="asc"> ASC </prop>
+						<prop key="desc"> DESC </prop>
+					</props>
+				</property>
+				<property name="sqlLast">
+					<value>  </value>
+				</property>
+			</bean>
+		</property>
+		<property name="nextIdRol">
+			<value>
+				<![CDATA[
+					SELECT MAX(ID_ROL_CAT) + 1 FROM CAT_ROL
+				]]>
+			</value>
+		</property>
+		<property name="existIdRol">
+			<value>
+                <![CDATA[
+					SELECT COUNT(*)
+					FROM CAT_ROL
+					WHERE ID_ROL_CAT=?
+				]]>
+			</value>
+		</property>
+	</bean>
+</beans>

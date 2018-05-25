@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	<bean id="CatalogContactMethodDao"
+		class="com.loam.framework.core.catalog.persistence.contact.dao.CatalogContactMethodDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+		<property name="qryCreateContactMethod">
+			<value>
+                <![CDATA[
+					INSERT INTO CAT_CONTACTMETHOD(
+						ID_CONTACT_METHOD_CAT,
+						DESC_CONTACT_METHOD_CAT, 
+						STATUS_FLAG,
+						START_DT,
+						LAST_UPDATE_DT,
+						LAST_UPDATE_USER
+					)values(?,?,?,?,?,?)
+				]]>
+			</value>
+		</property>
+		<property name="qryModifyContactMethod">
+			<value>
+                <![CDATA[
+					UPDATE CAT_CONTACTMETHOD SET
+						DESC_CONTACT_METHOD_CAT=?, 
+						STATUS_FLAG=?,
+						START_DT=?,
+						LAST_UPDATE_DT=?,
+						LAST_UPDATE_USER=?
+					WHERE ID_CONTACT_METHOD_CAT=?
+				]]>
+			</value>
+		</property>
+		<property name="qryAllContactMethod">
+			<bean class="com.loam.framework.core.catalog.persistence.common.JdbcQueryParameters">
+				<property name="sqlBase">
+					<value>
+						<![CDATA[	
+							SELECT 
+								ID_CONTACT_METHOD_CAT,
+								DESC_CONTACT_METHOD_CAT, 
+								STATUS_FLAG,
+								START_DT,
+								LAST_UPDATE_DT,
+								LAST_UPDATE_USER
+							FROM CAT_CONTACTMETHOD
+							WHERE 1 = 1
+						]]>
+					</value>
+				</property>
+				<property name="optionalParameters">
+					<props>
+						<prop key="idColor">AND ID_CONTACT_METHOD_CAT=?</prop>
+						<prop key="descColor"> AND UPPER(DESC_CONTACT_METHOD_CAT) LIKE ?</prop>
+						<prop key="statusFlag"> AND STATUS_FLAG=? </prop>
+						<prop key="limite"> LIMIT ?,?</prop>
+						<prop key="order"> ORDER BY DESC_CONTACT_METHOD_CAT </prop>
+						<prop key="asc"> ASC </prop>
+						<prop key="desc"> DESC </prop>
+					</props>
+				</property>
+				<property name="sqlLast">
+					<value>  </value>
+				</property>
+			</bean>
+		</property>		
+		<property name="qryCountAllContactMethod">
+			<bean class="com.loam.framework.core.catalog.persistence.common.JdbcQueryParameters">
+				<property name="sqlBase">
+					<value>
+						<![CDATA[	
+							SELECT COUNT(1)
+							FROM CAT_CONTACTMETHOD
+							WHERE 1 = 1
+						]]>
+					</value>
+				</property>
+				<property name="optionalParameters">
+					<props>
+						<prop key="idColor">AND ID_CONTACT_METHOD_CAT=?</prop>
+						<prop key="descColor"> AND UPPER(DESC_CONTACT_METHOD_CAT) LIKE ?</prop>
+						<prop key="statusFlag"> AND STATUS_FLAG=? </prop>
+						<prop key="limite"> LIMIT ?,?</prop>
+						<prop key="order"> ORDER BY DESC_CONTACT_METHOD_CAT </prop>
+						<prop key="asc"> ASC </prop>
+						<prop key="desc"> DESC </prop>
+					</props>
+				</property>
+				<property name="sqlLast">
+					<value>  </value>
+				</property>
+			</bean>
+		</property>			
+		<property name="nextIdContactMethod">
+			<value>
+                <![CDATA[
+					SELECT MAX(ID_CONTACT_METHOD_CAT) + 1 FROM  CAT_CONTACTMETHOD
+				]]>
+			</value>
+		</property>
+		<property name="existIdContactMethod">
+			<value>
+                <![CDATA[
+					SELECT COUNT(*)
+					FROM CAT_CONTACTMETHOD
+					WHERE ID_CONTACT_METHOD_CAT=?
+				]]>
+			</value>
+		</property>
+	</bean>
+</beans>

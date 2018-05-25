@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:sws="http://www.springframework.org/schema/web-services"
+	xmlns:oxm="http://www.springframework.org/schema/oxm"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans  
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd  
+	http://www.springframework.org/schema/web-services  
+	http://www.springframework.org/schema/web-services/web-services-2.0.xsd  
+	http://www.springframework.org/schema/context  
+	http://www.springframework.org/schema/context/spring-context-3.0.xsd
+	http://www.springframework.org/schema/oxm 
+	http://www.springframework.org/schema/oxm/spring-oxm-3.0.xsd">
+
+	<bean
+		class="org.springframework.ws.transport.http.WebServiceMessageReceiverHandlerAdapter">
+		<property name="messageFactory" ref="messageFactory"></property>
+	</bean>
+
+	<bean id="jaxb2Marshaller" class="org.springframework.oxm.jaxb.Jaxb2Marshaller">
+		<property name="classesToBeBound">
+			<list>
+				<value>com.loam.framework.core.catalog.jaxb.ws.catalogmanager.ConsultCatalogAccountIn
+				</value>
+				<value>com.loam.framework.core.catalog.jaxb.ws.catalogmanager.ConsultCatalogAccountOut
+				</value>
+				<value>com.loam.framework.core.catalog.jaxb.ws.catalogmanager.ConsultCatalogCategoryIn
+				</value>
+				<value>com.loam.framework.core.catalog.jaxb.ws.catalogmanager.ConsultCatalogCategoryOut
+				</value>
+				<value>com.loam.framework.core.catalog.jaxb.ws.catalogmanager.ConsultCatalogCoinIn
+				</value>
+				<value>com.loam.framework.core.catalog.jaxb.ws.catalogmanager.ConsultCatalogCoinOut
+				</value>
+				<value>com.loam.framework.core.catalog.jaxb.ws.catalogmanager.ConsultCatalogColorIn
+				</value>
+				<value>com.loam.framework.core.catalog.jaxb.ws.catalogmanager.ConsultCatalogColorOut
+				</value>
+				<value>com.loam.framework.core.catalog.jaxb.ws.catalogmanager.ConsultCatalogContactMethodIn
+				</value>
+				<value>com.loam.framework.core.catalog.jaxb.ws.catalogmanager.ConsultCatalogContactMethodOut
+				</value>
+				<value>com.loam.framework.core.catalog.jaxb.ws.catalogmanager.ConsultCatalogMenuIn
+				</value>
+				<value>com.loam.framework.core.catalog.jaxb.ws.catalogmanager.ConsultCatalogMenuOut
+				</value>
+				<value>com.loam.framework.core.catalog.jaxb.ws.catalogmanager.ConsultCatalogProductIn
+				</value>
+				<value>com.loam.framework.core.catalog.jaxb.ws.catalogmanager.ConsultCatalogProductOut
+				</value>
+				<value>com.loam.framework.core.catalog.jaxb.ws.catalogmanager.ConsultCatalogRolIn
+				</value>
+				<value>com.loam.framework.core.catalog.jaxb.ws.catalogmanager.ConsultCatalogRolOut
+				</value>
+				<value>com.loam.framework.core.catalog.jaxb.ws.catalogmanager.ConsultCatalogRolMenuIn
+				</value>
+				<value>com.loam.framework.core.catalog.jaxb.ws.catalogmanager.ConsultCatalogRolMenuOut
+				</value>
+				<value>com.loam.framework.core.catalog.jaxb.ws.catalogmanager.ConsultCatalogSubCategoryIn
+				</value>
+				<value>com.loam.framework.core.catalog.jaxb.ws.catalogmanager.ConsultCatalogSubCategoryOut
+				</value>
+				<value>com.loam.framework.core.catalog.jaxb.ws.catalogmanager.MaintainCatalogAccountIn
+				</value>
+				<value>com.loam.framework.core.catalog.jaxb.ws.catalogmanager.MaintainCatalogAccountOut
+				</value>
+				<value>com.loam.framework.core.catalog.jaxb.ws.catalogmanager.MaintainCatalogCategoryIn
+				</value>
+				<value>com.loam.framework.core.catalog.jaxb.ws.catalogmanager.MaintainCatalogCategoryOut
+				</value>
+				<value>com.loam.framework.core.catalog.jaxb.ws.catalogmanager.MaintainCatalogCoinIn
+				</value>
+				<value>com.loam.framework.core.catalog.jaxb.ws.catalogmanager.MaintainCatalogCoinOut
+				</value>
+				<value>com.loam.framework.core.catalog.jaxb.ws.catalogmanager.MaintainCatalogColorIn
+				</value>
+				<value>com.loam.framework.core.catalog.jaxb.ws.catalogmanager.MaintainCatalogColorOut
+				</value>
+				<value>com.loam.framework.core.catalog.jaxb.ws.catalogmanager.MaintainCatalogContactMethodIn
+				</value>
+				<value>com.loam.framework.core.catalog.jaxb.ws.catalogmanager.MaintainCatalogContactMethodOut
+				</value>
+				<value>com.loam.framework.core.catalog.jaxb.ws.catalogmanager.MaintainCatalogMenuIn
+				</value>
+				<value>com.loam.framework.core.catalog.jaxb.ws.catalogmanager.MaintainCatalogMenuOut
+				</value>
+				<value>com.loam.framework.core.catalog.jaxb.ws.catalogmanager.MaintainCatalogProductIn
+				</value>
+				<value>com.loam.framework.core.catalog.jaxb.ws.catalogmanager.MaintainCatalogProductOut
+				</value>
+				<value>com.loam.framework.core.catalog.jaxb.ws.catalogmanager.MaintainCatalogRolIn
+				</value>
+				<value>com.loam.framework.core.catalog.jaxb.ws.catalogmanager.MaintainCatalogRolOut
+				</value>
+				<value>com.loam.framework.core.catalog.jaxb.ws.catalogmanager.MaintainCatalogRolMenuIn
+				</value>
+				<value>com.loam.framework.core.catalog.jaxb.ws.catalogmanager.MaintainCatalogRolMenuOut
+				</value>
+				<value>com.loam.framework.core.catalog.jaxb.ws.catalogmanager.MaintainCatalogSubCategoryIn
+				</value>
+				<value>com.loam.framework.core.catalog.jaxb.ws.catalogmanager.MaintainCatalogSubCategoryOut
+				</value>
+			</list>
+		</property>
+
+		<property name="schemas">
+			<list>
+				<value>classpath:com/webapp/schemas/CatalogManagerV1.xsd</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean
+		class="org.springframework.ws.server.endpoint.adapter.GenericMarshallingMethodEndpointAdapter">
+		<constructor-arg ref="jaxb2Marshaller" />
+	</bean>
+
+	<bean id="messageFactory" class="org.springframework.ws.soap.saaj.SaajSoapMessageFactory">
+	</bean>
+
+	<bean
+		class="org.springframework.ws.transport.http.WsdlDefinitionHandlerAdapter" />
+
+	<bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+			<props>
+				<prop key="*.wsdl">CatalogManagerService</prop>
+			</props>
+		</property>
+		<property name="defaultHandler" ref="messageDispatcher" />
+	</bean>
+
+	<bean id="messageDispatcher"
+		class="org.springframework.ws.soap.server.SoapMessageDispatcher" />
+
+	<bean id="CatalogManagerService"
+		class="org.springframework.ws.wsdl.wsdl11.SimpleWsdl11Definition">
+		<property name="wsdl"
+			value="classpath:com/webapp/schemas/CatalogManagerV1.wsdl" />
+	</bean>
+
+	<bean
+		class="org.springframework.ws.server.endpoint.mapping.PayloadRootAnnotationMethodEndpointMapping">
+		<property name="interceptors">
+			<list>
+				<ref local="validatingInterceptor" />
+			</list>
+		</property>
+	</bean>
+	<!-- <bean id="validatingInterceptor" class="org.springframework.ws.soap.server.endpoint.interceptor.PayloadValidatingInterceptor"> 
+		com.context.framework.ws.interceptor.CustomValidatingInterceptor -->
+	<bean id="validatingInterceptor"
+		class="com.loam.framework.core.catalog.jaxb.interceptor.CustomValidatingInterceptor">
+		<property name="xsdSchemaCollection" ref="schemaCollection" />
+		<property name="validateRequest" value="true" />
+		<property name="validateResponse" value="true" />
+	</bean>
+
+	<bean id="schemaCollection"
+		class="org.springframework.xml.xsd.commons.CommonsXsdSchemaCollection">
+		<property name="xsds">
+			<list>
+				<value>classpath:com/webapp/schemas/CatalogManagerV1.xsd</value>
+			</list>
+		</property>
+		<property name="inline" value="true" />
+	</bean>
+
+	<!--class="org.springframework.ws.soap.server.endpoint.SoapFaultMappingExceptionResolver"> 
+		com.context.framework.ws.exception.JaxbCustomSoapFaultMappingExceptionResolver -->
+	<bean id="exceptionResolver"
+		class="com.loam.framework.core.catalog.jaxb.exception.CustomSoapFaultMappingExceptionResolver">
+		<property name="defaultFault" value="SERVER,Server error" />
+		<property name="exceptionMappings">
+			<value>com.context.framework.ws.exception.ServiceFaultException=SERVER,FaultMsg
+			</value>
+		</property>
+		<property name="order" value="1" />
+	</bean>
+
+	<bean
+		class="org.springframework.ws.soap.server.endpoint.SimpleSoapExceptionResolver">
+		<property name="order" value="2" />
+	</bean>
+
+	<bean id="customEndpointInterceptor"
+		class="com.loam.framework.core.catalog.jaxb.interceptor.CustomEndpointInterceptor"></bean>
+
+	<sws:interceptors>
+		<bean
+			class="org.springframework.ws.server.endpoint.interceptor.PayloadLoggingInterceptor"></bean>
+		<ref bean="validatingInterceptor" />
+		<ref bean="customEndpointInterceptor" />
+	</sws:interceptors>
+
+	<!-- 'messageReceiverHandlerAdapter' is a magic name org.springframework.ws.transport.http.WebServiceMessageReceiverHandlerAdapter -->
+	<bean id="messageReceiverHandlerAdapter"
+		class="com.loam.framework.core.catalog.jaxb.handler.CustomWebServiceMessageReceiverHandlerAdapter">
+	</bean>
+
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="ignoreUnresolvablePlaceholders" value="true" />
+		<property name="locations">
+			<list>
+				<value>classpath:com/webapp/properties/jaxb-core.properties
+				</value>
+				<value>classpath:com/webapp/properties/persis-core.properties
+				</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="commonProperties"
+		class="com.loam.framework.core.catalog.commons.properties.CommonProperties">
+		<property name="idEstatusNull" value="${id.estatus.null}" />
+		<property name="idEstatusPanic" value="${id.estatus.panic}" />
+		<property name="idEstatusFatal" value="${id.estatus.fatal}" />
+		<property name="idEstatusError" value="${id.estatus.error}" />
+		<property name="idEstatusSuccess" value="${id.estatus.success}" />
+		<property name="idEstatusVacio" value="${id.estatus.vacio}" />
+		<property name="idEstatusSeguridad" value="${id.estatus.seguridad}" />
+		<property name="idEstatusGeneral" value="${id.estatus.general}" />
+		<property name="idEstatusValidarRequest" value="${id.estatus.validar.request}" />
+
+		<property name="idEstatusWarning" value="${id.estatus.warning}" />
+
+		<property name="idEstatusNullCodigo" value="${id.estatus.null.codigo}" />
+		<property name="idEstatusPanicCodigo" value="${id.estatus.panic.codigo}" />
+		<property name="idEstatusFatalCodigo" value="${id.estatus.fatal.codigo}" />
+		<property name="idEstatusErrorCodigo" value="${id.estatus.error.codigo}" />
+		<property name="idEstatusSuccessCodigo" value="${id.estatus.success.codigo}" />
+		<property name="idEstatusVacioCodigo" value="${id.estatus.vacio.codigo}" />
+		<property name="idEstatusGeneralCodigo" value="${id.estatus.general.codigo}" />
+		<property name="idEstatusSeguridadCodigo" value="${id.estatus.seguridad.codigo}" />
+		<property name="idEstatusValidarRequestCodigo" value="${id.estatus.validar.request.codigo}" />
+		
+		<property name="idEstatusWarningCodigo" value="${id.estatus.warning.codigo}" />
+
+		<property name="idEstatusNullMsg" value="${id.estatus.null.msg}" />
+		<property name="idEstatusPanicMsg" value="${id.estatus.panic.msg}" />
+		<property name="idEstatusFatalMsg" value="${id.estatus.fatal.msg}" />
+		<property name="idEstatusErrorMsg" value="${id.estatus.error.msg}" />
+		<property name="idEstatusSuccessMsg" value="${id.estatus.success.msg}" />
+		<property name="idEstatusVacioMsg" value="${id.estatus.vacio.msg}" />
+		<property name="idEstatusSuccessConsultaMsg" value="${id.estatus.success.consulta.msg}" />
+		<property name="idEstatusGeneralMsg" value="${id.estatus.general.msg}" />
+		<property name="idEstatusSeguridadMsg" value="${id.estatus.seguridad.msg}" />
+		<property name="idEstatusValidarRequestMsg" value="${id.estatus.validar.request.msg}" />
+		
+		<property name="idEstatusWarningMsg" value="${id.estatus.warning.msg}" />
+
+		<property name="idNivelRequeridoPersistence" value="${id.nivel.requerido.persistence}" />
+		<property name="idNivelRequeridoBussines" value="${id.nivel.requerido.bussines}" />
+		<property name="idNivelRequeridoServices" value="${id.nivel.requerido.services}" />
+		<property name="idNivelRequeridoCore" value="${id.nivel.requerido.core}" />
+		<property name="idNivelRequeridoWeb" value="${id.nivel.requerido.web}" />
+		<property name="idNivelRequeridoRest" value="${id.nivel.requerido.rest}" />
+		<property name="idNivelRequeridoInterceptorValidar" value="${id.nivel.requerido.interceptor.validar}" />
+
+	</bean>
+</beans>

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	<bean id="CatalogAccountDao"
+		class="com.loam.framework.core.catalog.persistence.account.dao.CatalogAccountDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+		<property name="qryCreateAccount">
+			<value>
+                <![CDATA[
+					INSERT INTO CAT_ACCOUNT(
+						ID_ACCOUNT_CAT,
+						TYPE_ACCOUNT_CAT,
+						DESC_ACCOUNT_CAT,
+						STATUS_FLAG, 
+						START_DT, 
+						LAST_UPDATE_DT, 
+						LAST_UPDATE_USER)
+					values(?,?,?,?,?,?,?)
+				]]>
+			</value>
+		</property>
+		<property name="qryModifyAccount">
+			<value>
+                <![CDATA[
+					UPDATE CAT_ACCOUNT SET
+						ID_ACCOUNT_CAT= ?,
+						TYPE_ACCOUNT_CAT= ?,
+						DESC_ACCOUNT_CAT= ?,
+						STATUS_FLAG = ?, 
+						START_DT = ?, 
+						LAST_UPDATE_DT = ?, 
+						LAST_UPDATE_USER = ?
+					WHERE ID_ACCOUNT=?
+				]]>
+			</value>
+		</property>
+		<property name="qryConsultAccount">
+			<value>
+                <![CDATA[
+					SELECT 
+						ID_ACCOUNT_CAT,
+						TYPE_ACCOUNT_CAT,
+						DESC_ACCOUNT_CAT,
+						STATUS_FLAG, 
+						START_DT, 
+						LAST_UPDATE_DT, 
+						LAST_UPDATE_USER
+					FROM CAT_ACCOUNT
+					ORDER BY ID_ACCOUNT_CAT
+				]]>
+			</value>
+		</property>
+		<property name="qryAllAccount">
+			<bean class="com.loam.framework.core.catalog.persistence.common.JdbcQueryParameters">
+				<property name="sqlBase">
+					<value>
+						<![CDATA[	
+							SELECT 
+								ID_ACCOUNT_CAT,
+								TYPE_ACCOUNT_CAT,
+								DESC_ACCOUNT_CAT,
+								STATUS_FLAG, 
+								START_DT, 
+								LAST_UPDATE_DT, 
+								LAST_UPDATE_USER
+							FROM CAT_ACCOUNT
+							WHERE 1 = 1
+						]]>
+					</value>
+				</property>
+				<property name="optionalParameters">
+					<props>
+						<prop key="idAccount"> AND ID_ACCOUNT_CAT=? </prop>
+						<prop key="descAccount"> AND UPPER(DESC_ACCOUNT_CAT) LIKE ? </prop>
+						<prop key="statusFlag"> AND STATUS_FLAG=? </prop>
+						<prop key="limite"> LIMIT ?,? </prop>
+						<prop key="order"> ORDER BY DESC_ACCOUNT_CAT </prop>
+						<prop key="asc"> ASC </prop>
+						<prop key="desc"> DESC </prop>
+					</props>
+				</property>
+				<property name="sqlLast">
+					<value>  </value>
+				</property>
+			</bean>
+		</property>
+		<property name="qryCountAllAccount">
+			<bean class="com.loam.framework.core.catalog.persistence.common.JdbcQueryParameters">
+				<property name="sqlBase">
+					<value>
+						<![CDATA[	
+							SELECT COUNT(1)
+							FROM CAT_ACCOUNT
+							WHERE 1 = 1
+						]]>
+					</value>
+				</property>
+				<property name="optionalParameters">
+					<props>
+						<prop key="idAccount"> AND ID_ACCOUNT_CAT=? </prop>
+						<prop key="descAccount"> AND UPPER(DESC_ACCOUNT_CAT) LIKE ? </prop>
+						<prop key="statusFlag"> AND STATUS_FLAG=? </prop>
+						<prop key="limite"> LIMIT ?,? </prop>
+						<prop key="order"> ORDER BY DESC_ACCOUNT_CAT </prop>
+						<prop key="asc"> ASC </prop>
+						<prop key="desc"> DESC </prop>
+					</props>
+				</property>
+				<property name="sqlLast">
+					<value>  </value>
+				</property>
+			</bean>
+		</property>				
+		<property name="nextIdAccount">
+			<value>
+                <![CDATA[
+					SELECT MAX(ID_ACCOUNT_CAT) + 1 FROM  CAT_ACCOUNT
+				]]>
+			</value>
+		</property>
+		<property name="existIdAccount">
+			<value>
+                <![CDATA[
+					SELECT COUNT(*)
+					FROM CAT_ACCOUNT
+					WHERE ID_ACCOUNT_CAT=?
+				]]>
+			</value>
+		</property>
+	</bean>
+</beans>

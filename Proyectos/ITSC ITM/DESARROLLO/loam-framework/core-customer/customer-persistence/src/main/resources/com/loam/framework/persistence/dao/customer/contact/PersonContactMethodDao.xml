@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	<bean id="PersonContactMethodDao"
+		class="com.loam.framework.core.customer.persistence.contact.dao.PersonContactMethodDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+		<property name="qryCreatePersonContactMethod">
+			<value>
+                <![CDATA[
+					INSERT INTO CONTACTMETHOD(
+						ID_CONTACT_METHOD,
+						ID_PERSON, 
+						ID_CONTACT_METHOD_CAT,
+						REF_NUM,
+						STATUS_FLAG, 
+						START_DT, 
+						LAST_UPDATE_DT, 
+						LAST_UPDATE_USER)
+					VALUES(?,?,?,?,?,?,?,?)
+
+				]]>
+			</value>
+		</property>
+		<property name="qryModifyPersonContactMethod">
+			<value>
+                <![CDATA[
+					UPDATE CONTACTMETHOD SET
+						ID_PERSON = ?, 
+						ID_CONTACT_METHOD_CAT = ?,
+						REF_NUM = ?,
+						STATUS_FLAG = ?, 
+						START_DT = ?, 
+						LAST_UPDATE_DT = ?,
+						LAST_UPDATE_USER = ?
+					WHERE ID_CONTACT_METHOD=?
+				]]>
+			</value>
+		</property>
+		<property name="nextIdPersonContactMethod">
+			<value>
+				<![CDATA[
+					SELECT MAX(ID_CONTACT_METHOD) + 1 FROM  CONTACTMETHOD
+				]]>
+			</value>
+		</property>
+		<property name="qryAllPersonContactMethod">
+			<bean class="com.loam.framework.core.customer.persistence.common.JdbcQueryParameters">
+				<property name="sqlBase">
+					<value>
+						<![CDATA[	
+							SELECT
+								ID_CONTACT_METHOD,
+								ID_PERSON, 
+								ID_CONTACT_METHOD_CAT,
+								REF_NUM,
+								STATUS_FLAG, 
+								START_DT, 
+								LAST_UPDATE_DT, 
+								LAST_UPDATE_USER
+							FROM CONTACTMETHOD
+							WHERE 1 = 1
+						]]>
+					</value>
+				</property>
+				<property name="optionalParameters">
+					<props>
+						<prop key="idContactMethod">AND ID_CONTACT_METHOD=?</prop>
+						<prop key="idContactMethodCat">AND ID_CONTACT_METHOD_CAT=?</prop>
+						<prop key="idPerson">AND ID_PERSON=?</prop>
+						<prop key="limite"> LIMIT ?,?</prop>
+						<prop key="order"> ORDER BY ALIAS_USER </prop>
+						<prop key="asc"> ASC </prop>
+						<prop key="desc"> DESC </prop>
+					</props>
+				</property>
+				<property name="sqlLast">
+					<value>  </value>
+				</property>
+			</bean>
+		</property>
+		<property name="qryCountAllPersonContactMethod">
+			<bean class="com.loam.framework.core.customer.persistence.common.JdbcQueryParameters">
+				<property name="sqlBase">
+					<value>
+						<![CDATA[	
+							SELECT COUNT(1)
+							FROM CONTACTMETHOD
+							WHERE 1 = 1
+						]]>
+					</value>
+				</property>
+				<property name="optionalParameters">
+					<props>
+						<prop key="idContactMethod">AND ID_CONTACT_METHOD=?</prop>
+						<prop key="idContactMethodCat">AND ID_CONTACT_METHOD_CAT=?</prop>
+						<prop key="idPerson">AND ID_PERSON=?</prop>
+						<prop key="limite"> LIMIT ?,?</prop>
+						<prop key="order"> ORDER BY ALIAS_USER </prop>
+						<prop key="asc"> ASC </prop>
+						<prop key="desc"> DESC </prop>
+					</props>
+				</property>
+				<property name="sqlLast">
+					<value>  </value>
+				</property>
+			</bean>
+		</property>
+	</bean>
+</beans>

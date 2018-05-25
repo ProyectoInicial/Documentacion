@@ -1,0 +1,12 @@
+
+mvn archetype:generate -DgroupId=com.itsc.tms -DartifactId=ItscLogistics -DarchetypeGroupId=org.codehaus.mojo.archetypes -DarchetypeArtifactId=pom-root -DarchetypeVersion=1.1 -Dversion=1.0-SNAPSHOT -DinteractiveMode=false
+
+cd ItscLogistics
+
+mvn archetype:generate -DgroupId=com.itsc.tms.ear -DartifactId=ItscLogisticsEar -DarchetypeArtifactId=maven-archetype-webapp -Dversion=1.0 -DinteractiveMode=false
+mvn archetype:generate -DgroupId=com.itsc.tms.web -DartifactId=ItscLogisticsWeb -DarchetypeArtifactId=maven-archetype-webapp -Dversion=1.0 -DinteractiveMode=false
+mvn archetype:generate -DgroupId=com.itsc.tms.persistence -DartifactId=ItscLogisticsPersistence -Dpackage=jar -Dversion=1.0 -DinteractiveMode=false
+mvn archetype:generate -DgroupId=com.itsc.tms.commons -DartifactId=ItscLogisticsCommons -Dpackage=jar -Dversion=1.0 -DinteractiveMode=false
+mvn archetype:generate -DgroupId=com.itsc.tms.business -DartifactId=ItscLogisticsBusiness -Dpackage=jar -Dversion=1.0 -DinteractiveMode=false
+mvn archetype:generate -DgroupId=com.itsc.tms.services -DartifactId=ItscLogisticsServices -Dpackage=jar -Dversion=1.0 -DinteractiveMode=false
+mvn archetype:generate -DgroupId=com.itsc.tms.webservices -DartifactId=ItscLogisticsWS -Dpackage=jar -Dversion=1.0 -DinteractiveMode=false

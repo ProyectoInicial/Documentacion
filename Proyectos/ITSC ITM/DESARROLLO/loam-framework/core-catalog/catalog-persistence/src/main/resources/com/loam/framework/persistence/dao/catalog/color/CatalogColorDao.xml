@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	<bean id="CatalogColorDao"
+		class="com.loam.framework.core.catalog.persistence.color.dao.CatalogColorDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+		<property name="qryCreateColor">
+			<value>
+                <![CDATA[
+					INSERT INTO CAT_COLOR(
+						ID_COLOR_CAT, 
+						DESC_COLOR_CAT,
+						STATUS_FLAG,
+						START_DT,
+						LAST_UPDATE_DT,
+						LAST_UPDATE_USER
+					)values(?,?,?,?,?,?)
+				]]>
+			</value>
+		</property>
+		<property name="qryModifyColor">
+			<value>
+                <![CDATA[
+					UPDATE CAT_COLOR SET
+						ID_COLOR_CAT=?, 
+						DESC_COLOR_CAT=?,
+						STATUS_FLAG=?,
+						START_DT=?,
+						LAST_UPDATE_DT=?,
+						LAST_UPDATE_USER=?
+					WHERE ID_COLOR_CAT=?
+				]]>
+			</value>
+		</property>
+		<property name="qryConsultColor">
+			<value>
+                <![CDATA[
+					SELECT
+						ID_COLOR_CAT, 
+						DESC_COLOR_CAT,
+						STATUS_FLAG,
+						START_DT,
+						LAST_UPDATE_DT,
+						LAST_UPDATE_USER
+					FROM CAT_COLOR
+					ORDER BY ID_COLOR_CAT
+				]]>
+			</value>
+		</property>
+		<property name="qryAllColor">
+			<bean class="com.loam.framework.core.catalog.persistence.common.JdbcQueryParameters">
+				<property name="sqlBase">
+					<value>
+						<![CDATA[	
+							SELECT 
+								ID_COLOR_CAT, 
+								DESC_COLOR_CAT,
+								STATUS_FLAG,
+								START_DT,
+								LAST_UPDATE_DT,
+								LAST_UPDATE_USER
+							FROM CAT_COLOR
+							WHERE 1 = 1
+						]]>
+					</value>
+				</property>
+				<property name="optionalParameters">
+					<props>
+						<prop key="idColor"> AND ID_COLOR_CAT=? </prop>
+						<prop key="descColor"> AND UPPER(DESC_COLOR_CAT) LIKE ? </prop>
+						<prop key="statusFlag"> AND STATUS_FLAG=? </prop>
+						<prop key="limite"> LIMIT ?,? </prop>
+						<prop key="order"> ORDER BY DESC_COLOR_CAT </prop>
+						<prop key="asc"> ASC </prop>
+						<prop key="desc"> DESC </prop>
+					</props>
+				</property>
+				<property name="sqlLast">
+					<value>  </value>
+				</property>
+			</bean>
+		</property>		
+		<property name="qryCountAllColor">
+			<bean class="com.loam.framework.core.catalog.persistence.common.JdbcQueryParameters">
+				<property name="sqlBase">
+					<value>
+						<![CDATA[	
+							SELECT COUNT(1)
+							FROM CAT_COLOR
+							WHERE 1 = 1
+						]]>
+					</value>
+				</property>
+				<property name="optionalParameters">
+					<props>
+						<prop key="idColor"> AND ID_COLOR_CAT=? </prop>
+						<prop key="descColor"> AND UPPER(DESC_COLOR_CAT) LIKE ? </prop>
+						<prop key="statusFlag"> AND STATUS_FLAG=? </prop>
+						<prop key="limite"> LIMIT ?,? </prop>
+						<prop key="order"> ORDER BY DESC_COLOR_CAT </prop>
+						<prop key="asc"> ASC </prop>
+						<prop key="desc"> DESC </prop>
+					</props>
+				</property>
+				<property name="sqlLast">
+					<value>  </value>
+				</property>
+			</bean>
+		</property>			
+		<property name="nextIdColor">
+			<value>
+                <![CDATA[
+					SELECT MAX(ID_COLOR_CAT) + 1 FROM  CAT_COLOR
+				]]>
+			</value>
+		</property>
+		<property name="existIdColor">
+			<value>
+                <![CDATA[
+					SELECT COUNT(*)
+					FROM CAT_COLOR
+					WHERE ID_COLOR_CAT=?
+				]]>
+			</value>
+		</property>
+	</bean>
+</beans>

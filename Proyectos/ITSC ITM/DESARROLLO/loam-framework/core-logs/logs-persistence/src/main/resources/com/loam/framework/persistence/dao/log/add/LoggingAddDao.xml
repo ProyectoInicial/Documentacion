@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	<bean id="LoggingAddDao"
+		class="com.loam.framework.core.logs.persistence.add.LoggingAddDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+		<property name="qryLogging">
+			<value>
+                <![CDATA[
+					INSERT INTO LOGGING(
+						ID_LOGGING, 
+						FEC_TSTAMP,
+						COD_MENSAJE, 
+						MENSAJE,
+						PAQUETE,
+						METODO,
+						ID_SESION,
+						OPERACION,
+						START_DT, 
+						LAST_UPDATE_DT,  
+						LAST_UPDATE_USER)
+					values(?,?,?,?,?,?,?,?,?,?,?)
+				]]>
+			</value>
+		</property>
+		<property name="nextIdLogging">
+			<value>
+                <![CDATA[
+					SELECT MAX(ID_LOGGING) + 1 FROM  LOGGING
+				]]>
+			</value>
+		</property>
+	</bean>
+</beans>

@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://www.loam.com/framework/core/security/jaxb/ws/CorporateSecurity"
+	targetNamespace="http://www.loam.com/framework/core/security/jaxb/ws/CorporateSecurity"
+	elementFormDefault="qualified" version="1.0">
+	<xsd:annotation>
+		<xsd:documentation xml:lang="es">TRANSACCION: MSTSC02
+			DESCRIPCION: Seguridad Corporativa
+			PROGRAMADOR: Omar Santiago Romulo
+			EMPRESA: loam
+			FECHA: 14-08-2017
+		</xsd:documentation>
+	</xsd:annotation>
+	<xsd:include schemaLocation="CorporateSecurityDetails.xsd" />
+
+	<xsd:element name="SecurityLoginIn">
+		<xsd:annotation>
+			<xsd:documentation>SecurityLoginIn</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="1" name="tokenTemp">
+					<xsd:annotation>
+						<xsd:documentation>"tokenTemp"</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:string">
+							<xsd:minLength value="5" />
+							<xsd:maxLength value="255" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+				<xsd:element maxOccurs="1" minOccurs="1" name="AliasUser">
+					<xsd:annotation>
+						<xsd:documentation>AliasUser</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:string">
+							<xsd:minLength value="5" />
+							<xsd:maxLength value="255" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+				<xsd:element maxOccurs="1" minOccurs="1" name="PassUser">
+					<xsd:annotation>
+						<xsd:documentation>PassUser</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:string">
+							<xsd:minLength value="5" />
+							<xsd:maxLength value="255" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="SecurityLoginOut">
+		<xsd:annotation>
+			<xsd:documentation>SeguridadLoginOut</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="1" name="IdStatusLogin">
+					<xsd:annotation>
+						<xsd:documentation>IdStatusLogin</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:integer">
+							<xsd:minInclusive value="1" />
+							<xsd:maxInclusive value="9999999999" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+				<xsd:element maxOccurs="1" minOccurs="1" name="descIdStatusLogin">
+					<xsd:annotation>
+						<xsd:documentation>"descIdStatusLogin"</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:string">
+							<xsd:minLength value="5" />
+							<xsd:maxLength value="255" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+				<xsd:element maxOccurs="1" minOccurs="0" name="IdCountLogin">
+					<xsd:annotation>
+						<xsd:documentation>IdCount</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:integer">
+							<xsd:minInclusive value="1" />
+							<xsd:maxInclusive value="99" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+				<xsd:element maxOccurs="1" minOccurs="0" name="TokenUser">
+					<xsd:annotation>
+						<xsd:documentation>TokenUser</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:string">
+							<xsd:minLength value="5" />
+							<xsd:maxLength value="255" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="SecurityTokenIn">
+		<xsd:annotation>
+			<xsd:documentation>SecurityTokenIn</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="1" name="TokenUser">
+					<xsd:annotation>
+						<xsd:documentation>TokenUser</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:string">
+							<xsd:minLength value="5" />
+							<xsd:maxLength value="255" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="SecurityTokenOut">
+		<xsd:annotation>
+			<xsd:documentation>SecurityTokenOut</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="1" name="IdStatusToken">
+					<xsd:annotation>
+						<xsd:documentation>IdStatusToken</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:integer">
+							<xsd:minInclusive value="1" />
+							<xsd:maxInclusive value="9999999999" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+				<xsd:element maxOccurs="1" minOccurs="1" name="descIdStatusToken">
+					<xsd:annotation>
+						<xsd:documentation>"descIdStatusToken"</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:string">
+							<xsd:minLength value="5" />
+							<xsd:maxLength value="255" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="SecurityAliasIn">
+		<xsd:annotation>
+			<xsd:documentation>SecurityAliasIn</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="1" name="AliasUser">
+					<xsd:annotation>
+						<xsd:documentation>AliasUser</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:string">
+							<xsd:minLength value="5" />
+							<xsd:maxLength value="255" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="SecurityAliasOut">
+		<xsd:annotation>
+			<xsd:documentation>SecurityliasOut</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="1" name="IdStatusAliasUser">
+					<xsd:annotation>
+						<xsd:documentation>IdStatus</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:integer">
+							<xsd:minInclusive value="1" />
+							<xsd:maxInclusive value="9999999999" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+				<xsd:element maxOccurs="1" minOccurs="1" name="descIdStatusAliasUser">
+					<xsd:annotation>
+						<xsd:documentation>"descIdStatusToken"</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:string">
+							<xsd:minLength value="5" />
+							<xsd:maxLength value="255" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="SecurityEmailIn">
+		<xsd:annotation>
+			<xsd:documentation>SecurityEmailIn</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="1" name="EmailUser">
+					<xsd:annotation>
+						<xsd:documentation>EmailUser</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:string">
+							<xsd:minLength value="5" />
+							<xsd:maxLength value="255" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="SecurityEmailOut">
+		<xsd:annotation>
+			<xsd:documentation>SecurityEmailOut</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="1" name="IdStatusEmail">
+					<xsd:annotation>
+						<xsd:documentation>IdStatusEmail</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:integer">
+							<xsd:minInclusive value="1" />
+							<xsd:maxInclusive value="9999999999" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+				<xsd:element maxOccurs="1" minOccurs="1" name="descIdStatusEmail">
+					<xsd:annotation>
+						<xsd:documentation>"descIdStatusEmail"</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:string">
+							<xsd:minLength value="5" />
+							<xsd:maxLength value="255" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+</xsd:schema>

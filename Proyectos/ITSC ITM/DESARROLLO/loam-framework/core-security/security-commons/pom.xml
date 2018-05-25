@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+		<artifactId>core-security</artifactId>
+		<groupId>com.loam.framework.core.security</groupId>
+    <version>1.0-SNAPSHOT</version>
+  </parent>
+  <groupId>com.loam.framework.core.security.commons</groupId>
+  <artifactId>security-commons</artifactId>
+  <version>1.0</version>
+  <name>security-commons JAR</name>
+  <url>http://maven.apache.org</url>
+  
+    <properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<javaee-api.version>7.0</javaee-api.version>
+		<java.version>1.7</java.version>
+		<config-wtpversion>2.0</config-wtpversion>
+		<maven-resources-plugin.version>2.6</maven-resources-plugin.version>
+		<maven-jar.version>2.3.2</maven-jar.version>
+		<maven-compiler-plugin.version>2.3.2</maven-compiler-plugin.version>
+	</properties>
+	
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+  
+   <build>
+		<finalName>security-commons</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-eclipse-plugin</artifactId>
+				<configuration>
+					<wtpversion>${config-wtpversion}</wtpversion>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>${maven-jar.version}</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven-compiler-plugin.version}</version>
+				<configuration>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

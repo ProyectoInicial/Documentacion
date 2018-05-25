@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	<bean id="AliasDataDao"
+		class="com.loam.framework.core.customer.persistence.alias.dao.AliasDataDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+		<property name="qryCreateAlias">
+			<value>
+                <![CDATA[
+					INSERT INTO USERALIAS(
+						ID_USER_ALIAS,
+						TOKEN_USER,
+						ALIAS_USER,
+						EMAIL_USER,
+						PASS_USER,
+						ID_ROL,
+						STATUS_FLAG, 
+						START_DT, 
+						LAST_UPDATE_DT,
+						LAST_UPDATE_USER)
+					VALUES(?,?,?,?,?,?,?,?,?,?)
+				]]>
+			</value>
+		</property>
+		<property name="qryModifyAlias">
+			<value>
+                <![CDATA[
+					UPDATE USERALIAS SET
+						TOKEN_USER = ?,
+						ALIAS_USER = ?,
+						EMAIL_USER = ?,
+						PASS_USER = ?,
+						ID_ROL = ?,
+						STATUS_FLAG = ?, 
+						START_DT = ?, 
+						LAST_UPDATE_DT = ?,
+						LAST_UPDATE_USER = ?
+					WHERE ID_USER_ALIAS=?
+				]]>
+			</value>
+		</property>
+		<property name="nextIdAlias">
+			<value>
+				<![CDATA[
+					SELECT MAX(ID_USER_ALIAS) + 1 FROM  USERALIAS
+				]]>
+			</value>
+		</property>
+		<property name="qryAllConsultAlias">
+			<bean class="com.loam.framework.core.customer.persistence.common.JdbcQueryParameters">
+				<property name="sqlBase">
+					<value>
+						<![CDATA[	
+							SELECT
+								ID_USER_ALIAS, 
+								TOKEN_USER,
+								ALIAS_USER,
+								EMAIL_USER,
+								PASS_USER,
+								ID_ROL,
+								STATUS_FLAG, 
+								START_DT, 
+								LAST_UPDATE_DT,
+								LAST_UPDATE_USER
+							FROM USERALIAS
+							WHERE 1 = 1
+						]]>
+					</value>
+				</property>
+				<property name="optionalParameters">
+					<props>
+						<prop key="tokenUser">AND TOKEN_USER=?</prop>
+						<prop key="aliasUser">AND ALIAS_USER=?</prop>
+						<prop key="emailUser">AND EMAIL_USER=?</prop>
+						<prop key="limite"> LIMIT ?,?</prop>
+						<prop key="order"> ORDER BY ALIAS_USER </prop>
+						<prop key="asc"> ASC </prop>
+						<prop key="desc"> DESC </prop>
+					</props>
+				</property>
+				<property name="sqlLast">
+					<value>  </value>
+				</property>
+			</bean>
+		</property>
+		<property name="qryCountAllConsultAlias">
+			<bean class="com.loam.framework.core.customer.persistence.common.JdbcQueryParameters">
+				<property name="sqlBase">
+					<value>
+						<![CDATA[	
+							SELECT COUNT(1)
+							FROM USERALIAS
+							WHERE 1 = 1
+						]]>
+					</value>
+				</property>
+				<property name="optionalParameters">
+					<props>
+						<prop key="tokenUser">AND TOKEN_USER=?</prop>
+						<prop key="aliasUser">AND ALIAS_USER=?</prop>
+						<prop key="emailUser">AND EMAIL_USER=?</prop>
+						<prop key="limite"> LIMIT ?,?</prop>
+						<prop key="order"> ORDER BY ALIAS_USER </prop>
+						<prop key="asc"> ASC </prop>
+						<prop key="desc"> DESC </prop>
+					</props>
+				</property>
+				<property name="sqlLast">
+					<value>  </value>
+				</property>
+			</bean>
+		</property>
+	</bean>
+</beans>

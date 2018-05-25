@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:soap11="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
+	xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"
+	xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsp200409="http://schemas.xmlsoap.org/ws/2004/09/policy"
+	xmlns:wsp200607="http://www.w3.org/2006/07/ws-policy"
+	xmlns:mf="http://www.loam.com/framework/core/security/jaxb/ws/general/Headers"
+	xmlns:ns="http://www.loam.com/framework/core/security/jaxb/ws/CorporateSecurity"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:tns="http://www.loam.com/framework/core/security/jaxb/ws/CorporateSecurity"
+	xmlns:tnsEx="http://www.loam.com/framework/core/security/jaxb/ws/common/ExcepcionGeneral"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="CorporateSecurity"
+	targetNamespace="http://www.loam.com/framework/core/security/jaxb/ws/CorporateSecurity">
+
+	<wsdl:types>
+		<xsd:schema
+			targetNamespace="http://www.loam.com/framework/core/security/jaxb/ws/CorporateSecurity">
+			<xsd:include schemaLocation="CorporateSecurityV1.xsd" />
+			<xsd:import schemaLocation="HeaderRequest.xsd"
+				namespace="http://www.loam.com/framework/core/security/jaxb/ws/general/Headers" />
+			<xsd:import schemaLocation="HeaderResponse.xsd"
+				namespace="http://www.loam.com/framework/core/security/jaxb/ws/general/Headers" />
+			<xsd:import schemaLocation="ExcepcionGenerica.xsd"
+				namespace="http://www.loam.com/framework/core/security/jaxb/ws/common/ExcepcionGeneral" />
+		</xsd:schema>
+	</wsdl:types>
+
+	<!--ConsultAliasEmailIn-ConsultAliasEmailOut -->
+	<wsdl:message name="SecurityEmailExcepcion">
+		<wsdl:part name="error" element="tnsEx:Excepcion" />
+	</wsdl:message>
+	<wsdl:message name="SecurityEmailRequest">
+		<wsdl:part name="request" element="ns:SecurityEmailIn" />
+		<wsdl:part name="requestHeader" element="mf:HeaderReq" />
+	</wsdl:message>
+	<wsdl:message name="SecurityEmailResponse">
+		<wsdl:part name="response" element="ns:SecurityEmailOut" />
+		<wsdl:part name="responseHeader" element="mf:HeaderRes" />
+	</wsdl:message>
+
+	<!--ConsultAliasEmailIn-ConsultAliasEmailOut -->
+	<wsdl:message name="SecurityLoginExcepcion">
+		<wsdl:part name="error" element="tnsEx:Excepcion" />
+	</wsdl:message>
+	<wsdl:message name="SecurityLoginRequest">
+		<wsdl:part name="request" element="ns:SecurityLoginIn" />
+		<wsdl:part name="requestHeader" element="mf:HeaderReq" />
+	</wsdl:message>
+	<wsdl:message name="SecurityLoginResponse">
+		<wsdl:part name="response" element="ns:SecurityLoginOut" />
+		<wsdl:part name="responseHeader" element="mf:HeaderRes" />
+	</wsdl:message>
+
+	<!--ConsultAliasEmailIn-ConsultAliasEmailOut -->
+	<wsdl:message name="SecurityTokenExcepcion">
+		<wsdl:part name="error" element="tnsEx:Excepcion" />
+	</wsdl:message>
+	<wsdl:message name="SecurityTokenRequest">
+		<wsdl:part name="request" element="ns:SecurityTokenIn" />
+		<wsdl:part name="requestHeader" element="mf:HeaderReq" />
+	</wsdl:message>
+	<wsdl:message name="SecurityTokenResponse">
+		<wsdl:part name="response" element="ns:SecurityTokenOut" />
+		<wsdl:part name="responseHeader" element="mf:HeaderRes" />
+	</wsdl:message>
+
+	<!--ConsultAliasEmailIn-ConsultAliasEmailOut -->
+	<wsdl:message name="SecurityAliasExcepcion">
+		<wsdl:part name="error" element="tnsEx:Excepcion" />
+	</wsdl:message>
+	<wsdl:message name="SecurityAliasRequest">
+		<wsdl:part name="request" element="ns:SecurityAliasIn" />
+		<wsdl:part name="requestHeader" element="mf:HeaderReq" />
+	</wsdl:message>
+	<wsdl:message name="SecurityAliasResponse">
+		<wsdl:part name="response" element="ns:SecurityAliasOut" />
+		<wsdl:part name="responseHeader" element="mf:HeaderRes" />
+	</wsdl:message>
+
+	<wsdl:portType name="CorporateSecurity">
+		
+		<!--CatalogoRoles -->
+		<wsdl:operation name="SecurityLogin">
+			<wsdl:input name="SecurityLoginRequest" message="tns:SecurityLoginRequest" />
+			<wsdl:output name="SecurityLoginResponse" message="tns:SecurityLoginResponse" />
+			<wsdl:fault name="excepcion" message="tns:SecurityLoginExcepcion" />
+		</wsdl:operation>
+
+		<!--CatalogoRoles -->
+		<wsdl:operation name="SecurityToken">
+			<wsdl:input name="SecurityTokenRequest" message="tns:SecurityTokenRequest" />
+			<wsdl:output name="SecurityTokenResponse" message="tns:SecurityTokenResponse" />
+			<wsdl:fault name="excepcion" message="tns:SecurityTokenExcepcion" />
+		</wsdl:operation>
+
+		<!--CatalogoRoles -->
+		<wsdl:operation name="SecurityAlias">
+			<wsdl:input name="SecurityAliasRequest" message="tns:SecurityAliasRequest" />
+			<wsdl:output name="SecurityAliasResponse" message="tns:SecurityAliasResponse" />
+			<wsdl:fault name="excepcion" message="tns:SecurityAliasExcepcion" />
+		</wsdl:operation>
+
+		<!--CatalogoRoles -->
+		<wsdl:operation name="SecurityEmail">
+			<wsdl:input name="SecurityEmailRequest" message="tns:SecurityEmailRequest" />
+			<wsdl:output name="SecurityEmailResponse" message="tns:SecurityEmailResponse" />
+			<wsdl:fault name="excepcion" message="tns:SecurityEmailExcepcion" />
+		</wsdl:operation>
+	</wsdl:portType>
+
+	<wsdl:binding name="CorporateSecuritySOAP" type="tns:CorporateSecurity">
+		<soap11:binding transport="http://schemas.xmlsoap.org/soap/http"
+			style="document" />
+
+		<!-- -->
+		<wsdl:operation name="SecurityLogin">
+			<soap11:operation soapAction="" style="document" />
+			<wsdl:input name="SecurityLoginRequest">
+				<soap11:body parts="request" use="literal" />
+				<soap11:header message="tns:SecurityLoginRequest"
+					part="requestHeader" use="literal" />
+			</wsdl:input>
+			<wsdl:output name="SecurityLoginResponse">
+				<soap11:body parts="response" use="literal" />
+				<soap11:header message="tns:SecurityLoginResponse"
+					part="responseHeader" use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="excepcion">
+				<soap11:fault name="excepcion" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="SecurityToken">
+			<soap11:operation soapAction="" style="document" />
+			<wsdl:input name="SecurityTokenRequest">
+				<soap11:body parts="request" use="literal" />
+				<soap11:header message="tns:SecurityTokenRequest"
+					part="requestHeader" use="literal" />
+			</wsdl:input>
+			<wsdl:output name="SecurityTokenResponse">
+				<soap11:body parts="response" use="literal" />
+				<soap11:header message="tns:SecurityTokenResponse"
+					part="responseHeader" use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="excepcion">
+				<soap11:fault name="excepcion" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="SecurityAlias">
+			<soap11:operation soapAction="" style="document" />
+			<wsdl:input name="SecurityAliasRequest">
+				<soap11:body parts="request" use="literal" />
+				<soap11:header message="tns:SecurityAliasRequest"
+					part="requestHeader" use="literal" />
+			</wsdl:input>
+			<wsdl:output name="SecurityAliasResponse">
+				<soap11:body parts="response" use="literal" />
+				<soap11:header message="tns:SecurityAliasResponse"
+					part="responseHeader" use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="excepcion">
+				<soap11:fault name="excepcion" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="SecurityEmail">
+			<soap11:operation soapAction="" style="document" />
+			<wsdl:input name="SecurityEmailRequest">
+				<soap11:body parts="request" use="literal" />
+				<soap11:header message="tns:SecurityEmailRequest"
+					part="requestHeader" use="literal" />
+			</wsdl:input>
+			<wsdl:output name="SecurityEmailResponse">
+				<soap11:body parts="response" use="literal" />
+				<soap11:header message="tns:SecurityEmailResponse"
+					part="responseHeader" use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="excepcion">
+				<soap11:fault name="excepcion" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+	</wsdl:binding>
+
+	<wsdl:service name="CorporateSecurity">
+		<wsdl:port name="CorporateSecurityHttpPort" binding="tns:CorporateSecuritySOAP">
+			<soap11:address
+				location="http://localhost:8080/loam/security/ws/CorporateSecurityService.wsdl" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

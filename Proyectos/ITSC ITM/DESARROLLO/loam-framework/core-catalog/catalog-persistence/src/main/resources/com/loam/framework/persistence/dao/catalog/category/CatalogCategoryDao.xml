@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	<bean id="CatalogCategoryDao"
+		class="com.loam.framework.core.catalog.persistence.category.dao.CatalogCategoryDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+		<property name="qryCreateCategory">
+			<value>
+                <![CDATA[
+					INSERT INTO CAT_CATEGORIES(
+						ID_CATEGORIE_CAT,
+						DESC_CATEGORIE_CAT,
+						STATUS_FLAG,
+						START_DT,
+						LAST_UPDATE_DT,
+						LAST_UPDATE_USER
+					)
+					values(?,?,?,?,?,?)
+				]]>
+			</value>
+		</property>
+		<property name="qryModifyCategory">
+			<value>
+                <![CDATA[
+					UPDATE CAT_CATEGORIES SET
+						ID_CATEGORIE_CAT= ?,
+						DESC_CATEGORIE_CAT= ?,
+						STATUS_FLAG = ?,
+						START_DT = ?,
+						LAST_UPDATE_DT = ?,
+						LAST_UPDATE_USER = ?
+					WHERE ID_CATEGORIE=?
+				]]>
+			</value>
+		</property>
+		<property name="qryAllCategory">
+			<bean class="com.loam.framework.core.catalog.persistence.common.JdbcQueryParameters">
+				<property name="sqlBase">
+					<value>
+						<![CDATA[	
+							SELECT 
+								ID_CATEGORIE_CAT,
+								DESC_CATEGORIE_CAT,
+								STATUS_FLAG,
+								START_DT,
+								LAST_UPDATE_DT,
+								LAST_UPDATE_USER
+							FROM CAT_CATEGORIES
+							WHERE 1 = 1
+						]]>
+					</value>
+				</property>
+				<property name="optionalParameters">
+					<props>
+						<prop key="idCategory"> AND ID_CATEGORIE_CAT=? </prop>
+						<prop key="descCategory"> AND UPPER(DESC_CATEGORIE_CAT) LIKE ?</prop>
+						<prop key="statusFlag"> AND STATUS_FLAG=? </prop>
+						<prop key="limite"> LIMIT ?,?</prop>
+						<prop key="order"> ORDER BY DESC_CATEGORIE_CAT </prop>
+						<prop key="asc"> ASC </prop>
+						<prop key="desc"> DESC </prop>
+					</props>
+				</property>
+				<property name="sqlLast">
+					<value>
+					</value>
+				</property>
+			</bean>
+		</property>
+		<property name="qryCountAllCategory">
+			<bean class="com.loam.framework.core.catalog.persistence.common.JdbcQueryParameters">
+				<property name="sqlBase">
+					<value>
+						<![CDATA[	
+							SELECT COUNT(1)
+							FROM CAT_CATEGORIES
+							WHERE 1 = 1
+						]]>
+					</value>
+				</property>
+				<property name="optionalParameters">
+					<props>
+						<prop key="idCategory"> AND ID_CATEGORIE_CAT=? </prop>
+						<prop key="descCategory"> AND UPPER(DESC_CATEGORIE_CAT) LIKE ?</prop>
+						<prop key="statusFlag"> AND STATUS_FLAG=? </prop>
+						<prop key="limite"> LIMIT ?,?</prop>
+						<prop key="order"> ORDER BY DESC_CATEGORIE_CAT </prop>
+						<prop key="asc"> ASC </prop>
+						<prop key="desc"> DESC </prop>
+					</props>
+				</property>
+				<property name="sqlLast">
+					<value>
+					</value>
+				</property>
+			</bean>
+		</property>
+		<property name="nextIdCategory">
+			<value>
+                <![CDATA[
+					SELECT MAX(ID_CATEGORIE_CAT) + 1 FROM  CAT_CATEGORIES
+				]]>
+			</value>
+		</property>
+		<property name="existIdCategory">
+			<value>
+                <![CDATA[
+					SELECT COUNT(*)
+					FROM CAT_CATEGORIES
+					WHERE ID_CATEGORIE_CAT=?
+				]]>
+			</value>
+		</property>
+	</bean>
+</beans>

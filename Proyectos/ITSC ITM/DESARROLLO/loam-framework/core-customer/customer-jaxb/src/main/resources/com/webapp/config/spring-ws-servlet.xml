@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:sws="http://www.springframework.org/schema/web-services"
+	xmlns:oxm="http://www.springframework.org/schema/oxm"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans  
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd  
+	http://www.springframework.org/schema/web-services  
+	http://www.springframework.org/schema/web-services/web-services-2.0.xsd  
+	http://www.springframework.org/schema/context  
+	http://www.springframework.org/schema/context/spring-context-3.0.xsd
+	http://www.springframework.org/schema/oxm 
+	http://www.springframework.org/schema/oxm/spring-oxm-3.0.xsd">
+
+	<context:component-scan base-package="com.loam.framework.core.customer.jaxb.*" />
+	<context:component-scan base-package="com.loam.framework.core.customer.persistence.*" />
+	<bean
+		class="org.springframework.ws.transport.http.WebServiceMessageReceiverHandlerAdapter">
+		<property name="messageFactory" ref="messageFactory"></property>
+	</bean>
+
+	<bean id="jaxb2Marshaller" class="org.springframework.oxm.jaxb.Jaxb2Marshaller">
+		<property name="classesToBeBound">
+			<list>
+			<value>com.loam.framework.core.customer.jaxb.ws.customerdetails.ConsultDataPersonIn</value>
+			<value>com.loam.framework.core.customer.jaxb.ws.customerdetails.ConsultDataPersonOut</value>
+			<value>com.loam.framework.core.customer.jaxb.ws.customerdetails.ConsultUserAliasIn</value>
+			<value>com.loam.framework.core.customer.jaxb.ws.customerdetails.ConsultUserAliasOut</value>
+			<value>com.loam.framework.core.customer.jaxb.ws.customerdetails.ConsultUserContactAddressIn</value>
+			<value>com.loam.framework.core.customer.jaxb.ws.customerdetails.ConsultUserContactAddressOut</value>
+			<value>com.loam.framework.core.customer.jaxb.ws.customerdetails.ConsultUserContactMethodIn</value>
+			<value>com.loam.framework.core.customer.jaxb.ws.customerdetails.ConsultUserContactMethodOut</value>
+			<value>com.loam.framework.core.customer.jaxb.ws.customerdetails.MaintainDataPersonIn</value>
+			<value>com.loam.framework.core.customer.jaxb.ws.customerdetails.MaintainDataPersonOut</value>
+			<value>com.loam.framework.core.customer.jaxb.ws.customerdetails.MaintainUserAliasIn</value>
+			<value>com.loam.framework.core.customer.jaxb.ws.customerdetails.MaintainUserAliasOut</value>
+			<value>com.loam.framework.core.customer.jaxb.ws.customerdetails.MaintainUserContactAddressIn</value>
+			<value>com.loam.framework.core.customer.jaxb.ws.customerdetails.MaintainUserContactAddressOut</value>
+			<value>com.loam.framework.core.customer.jaxb.ws.customerdetails.MaintainUserContactMethodIn</value>
+			<value>com.loam.framework.core.customer.jaxb.ws.customerdetails.MaintainUserContactMethodOut</value>
+			</list>
+		</property>
+
+		<property name="schemas">
+			<list>
+				<value>classpath:com/webapp/schemas/CustomerDetailsV1.xsd</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean
+		class="org.springframework.ws.server.endpoint.adapter.GenericMarshallingMethodEndpointAdapter">
+		<constructor-arg ref="jaxb2Marshaller" />
+	</bean>
+
+	<bean id="messageFactory" class="org.springframework.ws.soap.saaj.SaajSoapMessageFactory">
+	</bean>
+
+	<bean
+		class="org.springframework.ws.transport.http.WsdlDefinitionHandlerAdapter" />
+
+	<bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+			<props>
+				<prop key="*.wsdl">CustomerDetailsService</prop>
+			</props>
+		</property>
+		<property name="defaultHandler" ref="messageDispatcher" />
+	</bean>
+
+	<bean id="messageDispatcher"
+		class="org.springframework.ws.soap.server.SoapMessageDispatcher" />
+
+	<bean id="CustomerDetailsService"
+		class="org.springframework.ws.wsdl.wsdl11.SimpleWsdl11Definition">
+		<property name="wsdl"
+			value="classpath:com/webapp/schemas/CustomerDetailsV1.wsdl" />
+	</bean>
+
+	<bean
+		class="org.springframework.ws.server.endpoint.mapping.PayloadRootAnnotationMethodEndpointMapping">
+		<property name="interceptors">
+			<list>
+				<ref local="validatingInterceptor" />
+			</list>
+		</property>
+	</bean>
+	<!-- <bean id="validatingInterceptor" class="org.springframework.ws.soap.server.endpoint.interceptor.PayloadValidatingInterceptor"> 
+		com.context.framework.ws.interceptor.CustomValidatingInterceptor -->
+	<bean id="validatingInterceptor"
+		class="com.loam.framework.core.customer.jaxb.interceptor.CustomValidatingInterceptor">
+		<property name="xsdSchemaCollection" ref="schemaCollection" />
+		<property name="validateRequest" value="true" />
+		<property name="validateResponse" value="true" />
+	</bean>
+
+	<bean id="schemaCollection"
+		class="org.springframework.xml.xsd.commons.CommonsXsdSchemaCollection">
+		<property name="xsds">
+			<list>
+				<value>classpath:com/webapp/schemas/CustomerDetailsV1.xsd</value>
+			</list>
+		</property>
+		<property name="inline" value="true" />
+	</bean>
+
+	<!--class="org.springframework.ws.soap.server.endpoint.SoapFaultMappingExceptionResolver"> 
+		com.context.framework.ws.exception.JaxbCustomSoapFaultMappingExceptionResolver -->
+	<bean id="exceptionResolver"
+		class="com.loam.framework.core.customer.jaxb.exception.CustomSoapFaultMappingExceptionResolver">
+		<property name="defaultFault" value="SERVER,Server error" />
+		<property name="exceptionMappings">
+			<value>com.context.framework.ws.exception.ServiceFaultException=SERVER,FaultMsg
+			</value>
+		</property>
+		<property name="order" value="1" />
+	</bean>
+
+	<bean
+		class="org.springframework.ws.soap.server.endpoint.SimpleSoapExceptionResolver">
+		<property name="order" value="2" />
+	</bean>
+
+	<bean id="customEndpointInterceptor"
+		class="com.loam.framework.core.customer.jaxb.interceptor.CustomEndpointInterceptor"></bean>
+
+	<sws:interceptors>
+		<bean
+			class="org.springframework.ws.server.endpoint.interceptor.PayloadLoggingInterceptor"></bean>
+		<ref bean="validatingInterceptor" />
+		<ref bean="customEndpointInterceptor" />
+	</sws:interceptors>
+
+	<!-- 'messageReceiverHandlerAdapter' is a magic name org.springframework.ws.transport.http.WebServiceMessageReceiverHandlerAdapter 
+	-->
+	<bean id="messageReceiverHandlerAdapter" class="com.loam.framework.core.customer.jaxb.handler.CustomWebServiceMessageReceiverHandlerAdapter"> 
+		</bean>
+		
+			<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="ignoreUnresolvablePlaceholders" value="true" />
+		<property name="locations">
+			<list>
+				<value>classpath:com/webapp/properties/properties-core.properties
+				</value>
+			</list>
+		</property>
+	</bean>
+		
+		<bean id="commonProperties"
+		class="com.loam.framework.core.customer.commons.utils.properties.CommonProperties">
+		<property name="IdEstatusNull" value="${id.estatus.null}" />
+		<property name="IdEstatusPanic" value="${id.estatus.panic}" />
+		<property name="IdEstatusFatal" value="${id.estatus.fatal}" />
+		<property name="IdEstatusError" value="${id.estatus.error}" />
+		<property name="IdEstatusSuccess" value="${id.estatus.success}" />
+		<property name="IdEstatusVacio" value="${id.estatus.vacio}" />
+		<property name="IdEstatusSeguridad" value="${id.estatus.seguridad}" />
+		<property name="IdEstatusGeneral" value="${id.estatus.general}" />
+		<property name="IdEstatusValidarRequest" value="${id.estatus.validar.request}" />
+
+		<property name="IdEstatusNullCodigo" value="${id.estatus.null.codigo}" />
+		<property name="IdEstatusPanicCodigo" value="${id.estatus.panic.codigo}" />
+		<property name="IdEstatusFatalCodigo" value="${id.estatus.fatal.codigo}" />
+		<property name="IdEstatusErrorCodigo" value="${id.estatus.error.codigo}" />
+		<property name="IdEstatusSuccessCodigo" value="${id.estatus.success.codigo}" />
+		<property name="IdEstatusVacioCodigo" value="${id.estatus.vacio.codigo}" />
+		<property name="IdEstatusGeneralCodigo" value="${id.estatus.general.codigo}" />
+		<property name="IdEstatusSeguridadCodigo" value="${id.estatus.seguridad.codigo}" />
+		<property name="IdEstatusValidarRequestCodigo" value="${id.estatus.validar.request.codigo}" />
+
+		<property name="IdEstatusNullMsg" value="${id.estatus.null.msg}" />
+		<property name="IdEstatusPanicMsg" value="${id.estatus.panic.msg}" />
+		<property name="IdEstatusFatalMsg" value="${id.estatus.fatal.msg}" />
+		<property name="IdEstatusErrorMsg" value="${id.estatus.error.msg}" />
+		<property name="IdEstatusSuccessMsg" value="${id.estatus.success.msg}" />
+		<property name="IdEstatusVacioMsg" value="${id.estatus.vacio.msg}" />
+		<property name="IdEstatusSuccessConsultaMsg" value="${id.estatus.success.consulta.msg}" />
+		<property name="IdEstatusGeneralMsg" value="${id.estatus.general.msg}" />
+		<property name="IdEstatusSeguridadMsg" value="${id.estatus.seguridad.msg}" />
+		<property name="IdEstatusValidarRequestMsg" value="${id.estatus.validar.request.msg}" />
+
+		<property name="IdNivelRequeridoPersistence" value="${id.nivel.requerido.persistence}" />
+		<property name="IdNivelRequeridoBussines" value="${id.nivel.requerido.bussines}" />
+		<property name="IdNivelRequeridoServices" value="${id.nivel.requerido.services}" />
+		<property name="IdNivelRequeridoCore" value="${id.nivel.requerido.core}" />
+		<property name="IdNivelRequeridoWeb" value="${id.nivel.requerido.web}" />
+		<property name="IdNivelRequeridoRest" value="${id.nivel.requerido.rest}" />
+		<property name="IdNivelRequeridoInterceptorValidar" value="${id.nivel.requerido.interceptor.validar}" />
+
+	</bean>
+</beans>

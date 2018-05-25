@@ -1,0 +1,496 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://www.loam.com/framework/core/customer/jaxb/ws/CustomerDetails"
+	targetNamespace="http://www.loam.com/framework/core/customer/jaxb/ws/CustomerDetails"
+	elementFormDefault="qualified" version="1.0">
+	<xsd:annotation>
+		<xsd:documentation xml:lang="es">TRANSACCION: MSTIC02
+			DESCRIPCION: Informacion Cuenta
+			PROGRAMADOR: Omar Santiago Romulo
+			EMPRESA: loam
+			FECHA: 14-08-2017
+		</xsd:documentation>
+	</xsd:annotation>
+	<xsd:include schemaLocation="CustomerDetails.xsd" />
+
+	<xsd:element name="MaintainDataPersonIn">
+		<xsd:annotation>
+			<xsd:documentation>MaintainDataPersonIn</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="1" name="DataPerson"
+					type="tns:DataPerson" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="MaintainDataPersonOut">
+		<xsd:annotation>
+			<xsd:documentation>MaintainDataPersonOut</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="0" name="DataPerson"
+					type="tns:DataPerson" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="ConsultDataPersonIn">
+		<xsd:annotation>
+			<xsd:documentation>ConsultDataPersonIn</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="1" name="IdPerson">
+					<xsd:annotation>
+						<xsd:documentation>IdPerson</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:integer">
+							<xsd:minInclusive value="1" />
+							<xsd:maxInclusive value="9999999999" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+				<xsd:element maxOccurs="1" minOccurs="1" name="IdPersonCat">
+					<xsd:annotation>
+						<xsd:documentation>IdPersonCat</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:integer">
+							<xsd:totalDigits value="19" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+				<xsd:element maxOccurs="1" minOccurs="1" name="TokenPerson">
+					<xsd:annotation>
+						<xsd:documentation>PersonToken</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:string">
+							<xsd:minLength value="5" />
+							<xsd:maxLength value="255" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+				<xsd:element maxOccurs="1" minOccurs="1" name="IdUser">
+					<xsd:annotation>
+						<xsd:documentation>IdUser</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:integer">
+							<xsd:totalDigits value="19" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+				<xsd:element maxOccurs="1" minOccurs="1" name="IdStart">
+					<xsd:annotation>
+						<xsd:documentation>IdStart</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:integer">
+							<xsd:minInclusive value="0" />
+							<xsd:maxInclusive value="99999" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+				<xsd:element maxOccurs="1" minOccurs="1" name="IdEnd">
+					<xsd:annotation>
+						<xsd:documentation>IdEnd</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:integer">
+							<xsd:minInclusive value="1" />
+							<xsd:maxInclusive value="99999" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+				<xsd:element maxOccurs="1" minOccurs="0" name="Order">
+					<xsd:annotation>
+						<xsd:documentation>Order</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:string">
+							<xsd:minLength value="0" />
+							<xsd:maxLength value="50" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="ConsultDataPersonOut">
+		<xsd:annotation>
+			<xsd:documentation>ConsultDataPersonOut</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="0" name="TotalRegs">
+					<xsd:annotation>
+						<xsd:documentation>TotalRegs</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:integer">
+							<xsd:minInclusive value="0" />
+							<xsd:maxInclusive value="9999999999" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+				<xsd:element maxOccurs="unbounded" minOccurs="1"
+					name="DataPerson" type="tns:DataPerson" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="MaintainUserAliasIn">
+		<xsd:annotation>
+			<xsd:documentation>MaintainUserAliasIn</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="1" name="UserAlias"
+					type="tns:UserAlias" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="MaintainUserAliasOut">
+		<xsd:annotation>
+			<xsd:documentation>MaintainUserAliasOut</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="0" name="UserAlias"
+					type="tns:UserAlias" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="ConsultUserAliasIn">
+		<xsd:annotation>
+			<xsd:documentation>ConsultUserAliasIn</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:choice>
+					<xsd:element maxOccurs="1" minOccurs="1" name="TokenUser">
+						<xsd:annotation>
+							<xsd:documentation>TokenUser</xsd:documentation>
+						</xsd:annotation>
+						<xsd:simpleType>
+							<xsd:restriction base="xsd:string">
+								<xsd:minLength value="5" />
+								<xsd:maxLength value="255" />
+							</xsd:restriction>
+						</xsd:simpleType>
+					</xsd:element>
+					<xsd:element maxOccurs="1" minOccurs="1" name="AliasUser">
+						<xsd:annotation>
+							<xsd:documentation>AliasUser</xsd:documentation>
+						</xsd:annotation>
+						<xsd:simpleType>
+							<xsd:restriction base="xsd:string">
+								<xsd:minLength value="5" />
+								<xsd:maxLength value="255" />
+							</xsd:restriction>
+						</xsd:simpleType>
+					</xsd:element>
+				</xsd:choice>
+				<xsd:element maxOccurs="1" minOccurs="0" name="EmailUser">
+					<xsd:annotation>
+						<xsd:documentation>EmailUser</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:string">
+							<xsd:minLength value="5" />
+							<xsd:maxLength value="255" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+				<xsd:element maxOccurs="1" minOccurs="1" name="IdStart">
+					<xsd:annotation>
+						<xsd:documentation>IdStart</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:integer">
+							<xsd:minInclusive value="0" />
+							<xsd:maxInclusive value="99999" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+				<xsd:element maxOccurs="1" minOccurs="1" name="IdEnd">
+					<xsd:annotation>
+						<xsd:documentation>IdEnd</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:integer">
+							<xsd:minInclusive value="1" />
+							<xsd:maxInclusive value="99999" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+				<xsd:element maxOccurs="1" minOccurs="0" name="Order">
+					<xsd:annotation>
+						<xsd:documentation>Order</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:string">
+							<xsd:minLength value="0" />
+							<xsd:maxLength value="50" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="ConsultUserAliasOut">
+		<xsd:annotation>
+			<xsd:documentation>ConsultUserAliasOut</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="0" name="TotalRegs">
+					<xsd:annotation>
+						<xsd:documentation>TotalRegs</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:integer">
+							<xsd:minInclusive value="0" />
+							<xsd:maxInclusive value="9999999999" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+				<xsd:element maxOccurs="unbounded" minOccurs="1" name="UserAlias"
+					type="tns:UserAlias" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="MaintainUserContactAddressIn">
+		<xsd:annotation>
+			<xsd:documentation>MaintainUserContactAddressIn</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="1"
+					name="UserContactAddress" type="tns:UserContactAddress" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="MaintainUserContactAddressOut">
+		<xsd:annotation>
+			<xsd:documentation>MaintainUserContactAddressOut</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="0"
+					name="UserContactAddress" type="tns:UserContactAddress" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="ConsultUserContactAddressIn">
+		<xsd:annotation>
+			<xsd:documentation>ConsultUserContactAddressIn</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="1" name="IdContactAddress">
+					<xsd:annotation>
+						<xsd:documentation>IdContactAddress</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:integer">
+							<xsd:totalDigits value="19" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+				<xsd:element maxOccurs="1" minOccurs="1" name="IdPerson">
+					<xsd:annotation>
+						<xsd:documentation>IdPerson</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:integer">
+							<xsd:totalDigits value="19" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+				<xsd:element maxOccurs="1" minOccurs="1" name="IdStart">
+					<xsd:annotation>
+						<xsd:documentation>IdStart</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:integer">
+							<xsd:minInclusive value="0" />
+							<xsd:maxInclusive value="99999" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+				<xsd:element maxOccurs="1" minOccurs="1" name="IdEnd">
+					<xsd:annotation>
+						<xsd:documentation>IdEnd</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:integer">
+							<xsd:minInclusive value="1" />
+							<xsd:maxInclusive value="99999" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+				<xsd:element maxOccurs="1" minOccurs="0" name="Order">
+					<xsd:annotation>
+						<xsd:documentation>Order</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:string">
+							<xsd:minLength value="0" />
+							<xsd:maxLength value="50" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="ConsultUserContactAddressOut">
+		<xsd:annotation>
+			<xsd:documentation>ConsultUserContactAddressOut</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="0" name="TotalRegs">
+					<xsd:annotation>
+						<xsd:documentation>TotalRegs</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:integer">
+							<xsd:minInclusive value="0" />
+							<xsd:maxInclusive value="9999999999" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+				<xsd:element maxOccurs="unbounded" minOccurs="1"
+					name="UserContactAddress" type="tns:UserContactAddress" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="MaintainUserContactMethodIn">
+		<xsd:annotation>
+			<xsd:documentation>MaintainUserContactMethodIn</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="1" name="UserContactMethod"
+					type="tns:UserContactMethod" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="MaintainUserContactMethodOut">
+		<xsd:annotation>
+			<xsd:documentation>MaintainUserContactMethodOut</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="0" name="UserContactMethod"
+					type="tns:UserContactMethod" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="ConsultUserContactMethodIn">
+		<xsd:annotation>
+			<xsd:documentation>ConsultUserContactMethodIn</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="1" name="IdContactMethod">
+					<xsd:annotation>
+						<xsd:documentation>IdContactMethod</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:integer">
+							<xsd:totalDigits value="19" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+				<xsd:element maxOccurs="1" minOccurs="1"
+					name="IdContactMethodCat">
+					<xsd:annotation>
+						<xsd:documentation>IdContactMethodCat</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:integer">
+							<xsd:totalDigits value="19" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+				<xsd:element maxOccurs="1" minOccurs="1" name="IdPerson">
+					<xsd:annotation>
+						<xsd:documentation>IdPerson</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:integer">
+							<xsd:totalDigits value="19" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+				<xsd:element maxOccurs="1" minOccurs="1" name="IdStart">
+					<xsd:annotation>
+						<xsd:documentation>IdStart</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:integer">
+							<xsd:minInclusive value="0" />
+							<xsd:maxInclusive value="99999" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+				<xsd:element maxOccurs="1" minOccurs="1" name="IdEnd">
+					<xsd:annotation>
+						<xsd:documentation>IdEnd</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:integer">
+							<xsd:minInclusive value="1" />
+							<xsd:maxInclusive value="99999" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+				<xsd:element maxOccurs="1" minOccurs="0" name="Order">
+					<xsd:annotation>
+						<xsd:documentation>Order</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:string">
+							<xsd:minLength value="0" />
+							<xsd:maxLength value="50" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="ConsultUserContactMethodOut">
+		<xsd:annotation>
+			<xsd:documentation>ConsultUserContactMethodOut</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="0" name="TotalRegs">
+					<xsd:annotation>
+						<xsd:documentation>TotalRegs</xsd:documentation>
+					</xsd:annotation>
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:integer">
+							<xsd:minInclusive value="0" />
+							<xsd:maxInclusive value="9999999999" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+				<xsd:element maxOccurs="unbounded" minOccurs="1"
+					name="UserContactMethod" type="tns:UserContactMethod" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+</xsd:schema>

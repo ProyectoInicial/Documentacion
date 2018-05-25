@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	<bean id="PersonDataDao"
+		class="com.loam.framework.core.customer.persistence.person.dao.PersonDataDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+		<property name="qryCreatePerson">
+			<value>
+                <![CDATA[
+					INSERT INTO USERPERSON(
+						ID_PERSON,
+						ID_PERSON_CAT,
+						TOKEN_PERSON,
+						NAME_PERSON,
+						SURNAMES_PERSON,
+						SEX_PERSON,
+						BIRTH_DATE_PERSON,
+						AGE_PERSON,
+						ID_USER,
+						STATUS_FLAG, 
+						START_DT, 
+						LAST_UPDATE_DT, 
+						LAST_UPDATE_USER)
+					VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)
+				]]>
+			</value>
+		</property>
+		<property name="qryModifyPerson">
+			<value>
+                <![CDATA[
+					UPDATE USERPERSON SET
+						ID_PERSON_CAT = ?,
+						TOKEN_PERSON = ?,
+						NAME_PERSON = ?,
+						SURNAMES_PERSON = ?,
+						SEX_PERSON = ?,
+						BIRTH_DATE_PERSON = ?,
+						AGE_PERSON = ?,
+						ID_USER = ?,
+						STATUS_FLAG = ?, 
+						START_DT = ?, 
+						LAST_UPDATE_DT = ?, 
+						LAST_UPDATE_USER = ?
+					WHERE ID_PERSON = ?
+				]]>
+			</value>
+		</property>
+		<!--property name="qryConsultPerson">
+			<value>
+                <![CDATA[
+					SELECT 
+						ID_PERSON, 
+						ID_PERSON_CAT,
+						TOKEN_PERSON,
+						NAME_PERSON,
+						SURNAMES_PERSON,
+						SEX_PERSON,
+						BIRTH_DATE_PERSON,
+						AGE_PERSON,
+						ID_USER,
+						STATUS_FLAG, 
+						START_DT, 
+						LAST_UPDATE_DT, 
+						LAST_UPDATE_USER
+					FROM USERPERSON
+					WHERE ID_PERSON = ?
+					ORDER BY ID_PERSON
+				]]>
+			</value>
+		</property-->
+		<property name="qryAllDataPerson">
+			<bean class="com.loam.framework.core.customer.persistence.common.JdbcQueryParameters">
+				<property name="sqlBase">
+					<value>
+						<![CDATA[	
+						SELECT 
+							ID_PERSON, 
+							ID_PERSON_CAT,
+							TOKEN_PERSON,
+							NAME_PERSON,
+							SURNAMES_PERSON,
+							SEX_PERSON,
+							BIRTH_DATE_PERSON,
+							AGE_PERSON,
+							ID_USER,
+							STATUS_FLAG, 
+							START_DT, 
+							LAST_UPDATE_DT, 
+							LAST_UPDATE_USER
+						FROM USERPERSON
+							WHERE 1 = 1
+						]]>
+					</value>
+				</property>
+				<property name="optionalParameters">
+					<props>
+						<prop key="idPerson"> AND ID_PERSON=?</prop>
+						<prop key="idPersonCat"> AND ID_PERSON_CAT= ? </prop>
+						<prop key="tokenPerson"> AND TOKEN_PERSON=? </prop>
+						<prop key="idUser"> AND ID_USER=? </prop>
+						<prop key="limite"> LIMIT ?,?</prop>
+						<prop key="order"> ORDER BY NAME_PERSON </prop>
+						<prop key="asc"> ASC </prop>
+						<prop key="desc"> DESC </prop>
+					</props>
+				</property>
+				<property name="sqlLast">
+					<value>  </value>
+				</property>
+			</bean>
+		</property>		
+		<property name="qryCountAllDataPerson">
+			<bean class="com.loam.framework.core.customer.persistence.common.JdbcQueryParameters">
+				<property name="sqlBase">
+					<value>
+						<![CDATA[	
+							SELECT COUNT(1)
+							FROM USERPERSON
+							WHERE 1 = 1
+						]]>
+					</value>
+				</property>
+				<property name="optionalParameters">
+					<props>
+						<prop key="idPerson"> AND ID_PERSON=?</prop>
+						<prop key="idPersonCat"> AND ID_PERSON_CAT= ? </prop>
+						<prop key="tokenPerson"> AND TOKEN_PERSON=? </prop>
+						<prop key="idUser"> AND ID_USER=? </prop>
+						<prop key="limite"> LIMIT ?,?</prop>
+						<prop key="order"> ORDER BY NAME_PERSON </prop>
+						<prop key="asc"> ASC </prop>
+						<prop key="desc"> DESC </prop>
+					</props>
+				</property>
+				<property name="sqlLast">
+					<value>  </value>
+				</property>
+			</bean>
+		</property>			
+		<property name="nextIdPerson">
+			<value>
+				<![CDATA[
+					SELECT MAX(ID_PERSON) + 1 FROM  USERPERSON
+				]]>
+			</value>
+		</property>
+		<property name="existPersonToken">
+			<value>
+                <![CDATA[
+					SELECT COUNT(*) FROM USERPERSON WHERE TOKEN_PERSON = ?
+				]]>
+			</value>
+		</property>
+		<property name="existPersonId">
+			<value>
+                <![CDATA[
+					SELECT COUNT(*) FROM USERPERSON WHERE ID_PERSON = ?
+				]]>
+			</value>
+		</property>
+	</bean>
+</beans>

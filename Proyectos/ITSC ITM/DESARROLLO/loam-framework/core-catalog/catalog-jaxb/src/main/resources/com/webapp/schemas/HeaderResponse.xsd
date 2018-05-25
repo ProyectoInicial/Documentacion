@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+xmlns:tns="http://www.loam.com/framework/core/catalog/jaxb/ws/general/Headers"
+ elementFormDefault="unqualified" targetNamespace="http://www.loam.com/framework/core/catalog/jaxb/ws/general/Headers" 
+version="1.4"  >
+
+  <xsd:annotation>
+    <xsd:documentation xml:lang="es">TRANSACCION: MSTHRS01
+DESCRIPCION: Headers Response
+PROGRAMADOR: Omar Santiago Romulo
+EMPRESA: loam
+FECHA: 14-08-2017
+	</xsd:documentation>
+  </xsd:annotation>
+  <xsd:element name="HeaderRes" type="tns:HeaderResponseType"/>
+  <xsd:complexType name="HeaderResponseType">
+    <xsd:sequence>
+      <xsd:element name="Id" minOccurs="1" maxOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="es">Identificador de operacion para correlar
+						operaciones</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1"/>
+            <xsd:maxLength value="36"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="Estatus" minOccurs="1" maxOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="es">Identificador de operacion en la entidad
+						destino(Back-End)</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1"/>
+            <xsd:maxLength value="50"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="Mensaje" minOccurs="1" maxOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="es">Numero de registros retornados</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1"/>
+            <xsd:maxLength value="255"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="EstadoRespuesta" type="tns:EstadoRespuestaType" minOccurs="1" maxOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="es">-Elemento que agrupa el detalle del error de
+						Negocio</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="TokenOperacion" minOccurs="1" maxOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>Token de operacion retornada por la interfaz Valida Transaccion, es un token que se genera inicialmente al momento de la utentificacion y es enviado en cada una de las invocaciones posteriores.
+
+El mismo cambia con cada invocacion, es decir un nuevo token es generado como respuesta a una operacion y el cual debera ser enviado en la invocacion subsecuente.
+
+El id de la ssesion es el mismo pero el token de operacion cambia con cada invocacion.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1"/>
+            <xsd:maxLength value="256"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name="fechaHora" type="xsd:dateTime" use="optional">
+      <xsd:annotation>
+        <xsd:documentation xml:lang="es">Momento en la que se
+					ejecuta la peticion</xsd:documentation>
+      </xsd:annotation>
+    </xsd:attribute>
+  </xsd:complexType>
+  <xsd:complexType name="EstadoRespuestaType">
+    <xsd:sequence>
+      <xsd:element name="IdOperacion" minOccurs="1" maxOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>Identificador del mensaje de Error</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1"/>
+            <xsd:maxLength value="10"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="Metodo" minOccurs="1" maxOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="es">Mensaje de negocio para el usuario(Catalogo)</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1"/>
+            <xsd:maxLength value="255"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="Clase" minOccurs="1" maxOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="es">Mensaje de negocio para el usuario(Catalogo)</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1"/>
+            <xsd:maxLength value="255"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="MensajeDetallado" minOccurs="1" maxOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="es">StackTrace, lista completa del error de sistema.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1"/>
+            <xsd:maxLength value="500"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="NivelSegRequerido" type="xsd:int" minOccurs="1" maxOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>Nivel de seguridad de requerido por la operacion
+						en el caso de que no existieran permisos
+						suficientes para su ejecucion (Modulo de
+						Seguridad).</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>
