@@ -217,40 +217,75 @@
 						<div class="card ">
 							<div class="card-header ">
 								<h4 class="card-title">
-									Navigation Pills - <small class="description">Horizontal
-										Tabs</small>
+									Rol - <small class="description">Administracion de
+										Roles</small>
 								</h4>
 							</div>
 							<div class="card-body ">
 								<ul class="nav nav-pills nav-pills-primary" role="tablist">
 									<li class="nav-item"><a class="nav-link active"
-										data-toggle="tab" href="#link1" role="tablist"> Profile </a></li>
+										data-toggle="tab" href="#link1" role="tablist"> Alta </a></li>
 									<li class="nav-item"><a class="nav-link" data-toggle="tab"
-										href="#link2" role="tablist"> Settings </a></li>
-									<li class="nav-item"><a class="nav-link" data-toggle="tab"
-										href="#link3" role="tablist"> Options </a></li>
+										href="#link2" role="tablist"> Busqueda </a></li>
 								</ul>
 								<div class="tab-content tab-space">
 									<div class="tab-pane active" id="link1">
-										Collaboratively administrate empowered markets via
-										plug-and-play networks. Dynamically procrastinate B2C users
-										after installed base benefits. <br>
-										<br> Dramatically visualize customer directed convergence
-										without revolutionary ROI.
+										<div class="col-md-12">
+											<div class="card">
+												<div class="card-header">
+													<h5 class="title">Rol</h5>
+												</div>
+												<div class="card-body">
+													<form>
+														<div class="row">
+															<div class="col-md-5 pr-1">
+																<div class="form-group">
+																	<label>Id Rol </label> 
+																	<input type="text" class="form-control" name="idRol" disabled="" placeholder="Id Rol">
+																</div>
+															</div>
+															<div class="col-md-3 px-1">
+																<div class="form-group">
+																	<label>Desc. Rol </label>
+																	<input type="text" class="form-control" name="descRol" placeholder="Desc Rol">
+																</div>
+															</div>
+														</div>
+														<div class="row">
+															<div class="col-md-6 pr-1">
+																<div class="form-group">
+																	<label>Estatus </label> 
+																	<input type="text" class="form-control" name="estatusRol" placeholder="Company">
+																</div>
+															</div>
+														</div>
+														<div class="row">
+															<div class="col-md-4 pr-1">
+																<div class="form-group">
+																	<button type="submit" class="btn btn-primary">Nuevo</button>
+																</div>
+															</div>
+															<div class="col-md-4 px-1">
+																<div class="form-group">
+																	<button type="submit" class="btn btn-primary">Nuevo</button>
+																</div>
+															</div>
+															<div class="col-md-4 pl-1">
+																<div class="form-group">
+																	<button type="submit" class="btn btn-primary">Nuevo</button>
+																</div>
+															</div>
+														</div>
+													</form>
+												</div>
+											</div>
+										</div>
 									</div>
 									<div class="tab-pane" id="link2">
 										Efficiently unleash cross-media information without
 										cross-media value. Quickly maximize timely deliverables for
-										real-time schemas. <br>
-										<br>Dramatically maintain clicks-and-mortar solutions
-										without functional solutions.
-									</div>
-									<div class="tab-pane" id="link3">
-										Completely synergize resource taxing relationships via premier
-										niche markets. Professionally cultivate one-to-one customer
-										service with robust ideas. <br>
-										<br>Dynamically innovate resource-leveling customer
-										service for state of the art customer service.
+										real-time schemas. <br> <br>Dramatically maintain
+										clicks-and-mortar solutions without functional solutions.
 									</div>
 								</div>
 							</div>
