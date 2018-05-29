@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
+	<constant name="struts.devMode" value="true" />
+	<constant name="struts.custom.i18n.resources" value="globalMessages" />
+
+	<constant name="struts.convention.result.path" value="/" />
+	<constant name="struts.convention.default.parent.package" value="convention" />
+	<constant name="struts.convention.action.fileProtocols" value="jar,wsjar" />
+	<constant name="struts.convention.exclude.parentClassLoader" value="false" />
+	<constant name="struts.convention.action.mapAllMatches" value="true" />
+	<constant name="struts.convention.action.packages" value="com.itsc.tms.web.*" />
+
+	<package name="convention" extends="convention-default">
+		<result-types>
+			<result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult" />
+		</result-types>
+	</package>
+
+	<package name="default" namespace="/" extends="struts-default">
+		<result-types>
+			<result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult" />
+		</result-types>
+		<!--action name="seguridadLoginAction" 
+			class="com.itsc.tms.web.seguridad.login.SeguridadLoginAction" >
+			<result name="success">jsp/seguridad/login/login.jsp</result>
+		</action-->
+	</package>
+</struts>
