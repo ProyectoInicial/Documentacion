@@ -22,11 +22,12 @@ public class SeguridadLoginAction extends CommonAction {
 			log.info("input UsuariosAction...");
 		}
 		String input = null;
-		if(user == null){
+		input = INPUT;
+		/*if(user == null){
 			input = INPUT;
 		 }else{
 			 input = SUCCESS;
-		 }
+		 }*/
 		return input;
 	}
 
